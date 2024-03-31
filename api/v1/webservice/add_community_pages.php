@@ -11,7 +11,6 @@ class WebService extends GeneralClass
     public function add_community_pages()
     {
         $data = (object) $this->params;
-        $method = $this->requiredParameter($data, 'method', "Method is required");
         $nationality = $this->requiredParameter($data, 'nationality', "Nationality is required");
         $community_name = $this->requiredParameter($data, 'community_name', "Community name should not be empty");
         $community_tag = $this->requiredParameter($data, 'community_tag', "Community tag should not be empty");
@@ -38,12 +37,12 @@ class WebService extends GeneralClass
         // add users data in users
         $data = array(
             "user_id" => $user_id,
-            "admin" => $admin,
-            'community_rules' => $community_rules,
-            "community_description" => $community_description,
-            "community_tag" => $community_tag,
+            'country' => $nationality,    
             "community_name" => $community_name,
-            'country' => $nationality            
+            "community_tag" => $community_tag, 
+            "community_description" => $community_description,
+            'community_rules' => $community_rules,
+            "admin" => $admin,         
         );
 
         $add_home_id = $this->db->insert('community_pages', $data);

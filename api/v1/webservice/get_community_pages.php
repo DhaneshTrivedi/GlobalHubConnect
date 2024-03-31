@@ -13,10 +13,10 @@ class WebService extends GeneralClass
         $data = (object) $this->params;
         $data = null;
         // Fetch all rental home data
-        $rentalHomes = $this->db->get("community_pages", null);
+        $community_pages = $this->db->get("community_pages");
 
         // Check if any rental homes were found
-        if (!$rentalHomes) {
+        if (!$community_pages) {
             $ResponseData = array(
                 "message" => "No pages found",
                 "code" => FAILED,
@@ -30,7 +30,7 @@ class WebService extends GeneralClass
             "message" => "Community pages found",
             'status' => $this->translate('STATUS_SUCCESS'),
             "code" => SUCCESS,
-            "rental_homes" => $rentalHomes
+            "community_pages" => $community_pages
         );
         $this->responseReturn($ResponseData);
     }
