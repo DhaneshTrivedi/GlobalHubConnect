@@ -49,8 +49,7 @@ class WebService extends GeneralClass
         // add users data in users
         $data = array(
             "user_id" => $user_id,
-            "event_title" => $state,
-            'event_title' => $city,
+            "event_title" => $event_title,
             "event_description" => $event_description,
             "country" => $country,
             "state" => $state,
