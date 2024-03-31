@@ -11,7 +11,6 @@ class WebService extends GeneralClass
     public function add_events()
     {
         $data = (object) $this->params;
-        $method = $this->requiredParameter($data, 'method', "method is required");
         $event_title = $this->requiredParameter($data, 'event_title', "event_title should not be empty");
         $event_description = $this->requiredParameter($data, 'event_description', "event_description should not be empty");
         $country = $this->requiredParameter($data, 'country', "country is required");
@@ -46,18 +45,18 @@ class WebService extends GeneralClass
 
         $datetime = DATETIME;
 
+        $converted_time = date('H:i:s', strtotime($time));
         // add users data in users
         $data = array(
             "user_id" => $user_id,
-            "event_title" => $state,
-            'event_title' => $city,
+            "event_title" => $event_title,
             "event_description" => $event_description,
             "country" => $country,
             "state" => $state,
             'city' => $city,
             'location' => $location,
             'date' => $date,
-            'time' => $time,
+            'time' => $converted_time,
             'duration' => $duration,
             'event_organizer' => $event_organizer,
             'event_guest' => $event_guest,
