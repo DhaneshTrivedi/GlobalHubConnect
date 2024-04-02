@@ -107,6 +107,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" style="color:white; " href="Rent-Home.html">Rent Home</a>
               <a class="dropdown-item" style="color:white; " href="Recruite.html">Recruite</a>
+              <a class="dropdown-item" style="color:white; " href="community_pages.html">Community</a>
             </div>
           </li>
           <li><a href="pricing.html">Pricing</a></li>

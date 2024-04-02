@@ -32,7 +32,6 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <style>
     .container_acc {
-      margin-top: 20vh;
       width: 90vw;
       display: flex;
       justify-content: center;
@@ -56,6 +55,51 @@
     .dropdown-item:hover {
       font-size: 110%;
       background-color: var(--color-secondary);
+    }
+    .search-container{
+        height:17vh;
+        width:100vw;
+        padding-left:20vw;
+        padding-top:10px;
+        position: relative; 
+        display: inline-block; 
+        margin-top:8rem;
+        
+    }
+   
+ 
+    .search-container input{
+        border: 3px solid grey;
+        width:55vw;
+        height:8vh;
+        border-radius:30px;
+        padding-left:100px;
+        padding-top:5px;
+        color: grey;
+        font-size: 20px;
+        font-family: "Noto Sans Khojki", sans-serif;
+        font-weight: 400px;
+        font-style: normal;
+        box-shadow: 1px 2px grey;
+
+    }
+
+    input:focus{
+      border-color: grey;
+    }
+    .send-btn{
+           width:90px;
+           height:8vh;
+           background-color: transparent;
+           color:grey;
+           border:3px solid grey;
+           border-radius:30px;
+           position: absolute; 
+           left: 308px; 
+           border: none; 
+           cursor: pointer;  
+           padding-top:5px;     
+
     }
   </style>
 
@@ -94,6 +138,12 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
+
+  <!-- search bar -->
+  <div class="search-container">
+        <input type="text" id="get-text" placeholder="Search home...">
+        <button class="send-btn"><i style="font-size: 27px;" class="fa-solid fa-magnifying-glass"></i></button>
+</div>
 
   <!-- container containing accomodation cards -->
   <div class="container_acc">
