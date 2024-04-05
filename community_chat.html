@@ -78,7 +78,7 @@
     }
    
  
-    .right-bottom-container input{
+     .input0{
         border: 3px solid grey;
         border-right:none;
         width:60vw;
@@ -90,7 +90,10 @@
         font-family: "Noto Sans Khojki", sans-serif;
         font-weight: 400;
         font-style: normal;
-        
+    }
+
+    .input0:focus{
+      border-color: grey;
     }
     .send-btn{
            width:110px;
@@ -102,6 +105,50 @@
            border-right:3px solid grey;
          
            border-bottom-right-radius: 30px;
+
+    }
+
+    .search-container{
+        height:17vh;
+        width:100vw;
+        padding-top:10px;
+        position: relative; 
+        display: inline-block; 
+        margin-left:20px;
+        
+    }
+   
+ 
+.input1{
+        border: 3px solid grey;
+        width:22vw;
+        height:7vh;
+        border-radius:30px;
+        padding-left:60px;
+        padding-top:5px;
+        color: grey;
+        font-size: 17px;
+        font-family: "Noto Sans Khojki", sans-serif;
+        font-weight: 400px;
+        font-style: normal;
+        box-shadow: 1px 2px grey;
+    }
+
+    .input1:focus{
+      border-color: grey;
+    }
+    .send-btn1{
+           width:50px;
+           height:7vh;
+           background-color:transparent;
+           color:grey;
+           border:3px solid grey;
+           border-radius:30px;
+           position: absolute; 
+           left: 0px; 
+           border: none; 
+           cursor: pointer;  
+           padding-top:5px;     
 
     }
   </style>
@@ -151,12 +198,17 @@
  <!-- End Header -->
 
 <div class=" main-container">
-<div class="left-container">Profile and pages display</div>
+<div class="left-container">
+  <div class="search-container">
+    <input class="input1" type="text" id="get-text" placeholder="search communiy...">
+    <button class="send-btn1"><i style="font-size: 17px;" class="fa-solid fa-magnifying-glass"></i></button>
+</div>
+</div>
 <div class="right">
 <div class="right-container">Gujju community</div>
 <div class="right-bottom-container">
     <hr>
-        <input type="text" id="get-text" placeholder="Type here...">
+        <input class="input0" type="text" id="get-text" placeholder="Type here...">
         <button class="send-btn"><i style="font-size: 31px;" class="fa-solid fa-paper-plane"></i></button>
 </div>
 </div>
