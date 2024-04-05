@@ -44,6 +44,18 @@
       font-size: 110%;
       background-color: var(--color-secondary);
     }
+.green{
+  color: green;
+  font-size: 37px;
+  margin-left:30px;
+  margin-top:15px;
+}
+.red{
+  color: red;
+  font-size: 37px;
+  margin-left:30px;
+  margin-top:15px;
+}
   </style>
 
 </head>
@@ -102,11 +114,11 @@
             opportunities, and vibrant communities.</p>
 
           <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" class="form-control" placeholder="Enter City">
+            <input type="text" class="form-control" placeholder="Enter Country">
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
 
-          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="count_display row gy-4" data-aos="fade-up" data-aos-delay="400">
 
             <div class="col-lg-3 col-6">
               <div class="stats-item text-center w-100 h-100">
@@ -139,6 +151,9 @@
                 <p>Communities</p>
               </div>
             </div><!-- End Stats Item -->
+
+          </div> 
+          <div class="available">
 
           </div>
         </div>
@@ -920,6 +935,47 @@
       });
 
     }
+
+    // checking for country service available :
+
+const form = document.querySelector('form');
+const Input = document.querySelector(".form-control");
+const countryList = ["USA", "Canada", "UK", "Australia", "Germany", "France", "Japan", "China", "Brazil", "India"];
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent form submission
+  const inputValue = Input.value.trim().toUpperCase(); // Trim and convert input to uppercase
+  let count_display = document.querySelector(".count_display");
+  let available = document.querySelector(".available");
+  let list = available.classList;
+  
+  // Check if the input value exactly matches any country in the countryList
+  const matchedCountry = countryList.find(country => country.toUpperCase() === inputValue);
+
+
+  // Display search result if an exact match is found
+  if (matchedCountry) {
+    console.log("Country match found:", matchedCountry);
+    count_display.style.display = "none";
+    available.innerHTML = "All Services available in " + inputValue;
+    list.add("green");
+    list.remove('red');
+    // Perform further actions with the matched country if needed
+  }
+  else{
+
+    if(inputValue == '' || inputValue == ' '){
+    count_display.style.display = 'flex';
+  }
+  else{
+    count_display.style.display = "none";
+    available.innerHTML = "we are comming soon at " + inputValue;
+    list.add('red');
+    list.remove('green')
+  }
+  }
+});
+
   </script>
 
 </body>
