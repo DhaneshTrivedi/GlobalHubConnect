@@ -38,7 +38,7 @@
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
@@ -138,17 +138,8 @@
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Services
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" style="color:white; " href="Rent-Home.html">Rent Home</a>
-              <a class="dropdown-item" style="color:white; " href="Recruite.html">Recruite</a>
-              <a href="community_pages.html" class="dropdodown-item">Community Pages</a>
-              <a href="community_events.html" class="dropdown-item">Community Events</a>
-            </div>
+          <li id="servicesNavItem" class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
           </li>
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -182,7 +173,7 @@
                 <option value="India">India</option>
                 <option value="USA">USA</option>
                 <option value="Canada">Canada</option>
-            </select>
+              </select>
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Community Name:</label>
@@ -298,6 +289,8 @@
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
               '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>'+
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>'+
               '</div>' +
               '</li>'
             );
@@ -319,7 +312,7 @@
       setTimeout(function () {
         user_id = $("#user_id").text();
         var data = {
-          "method": "get_rent_home",
+          "method": "get_community_pages",
           "user_id": user_id
         };
 
@@ -339,18 +332,18 @@
             // Access the status property
             var message = responseObject.message;
 
-            if (message === "Found"
+            if (message === "Community pages found"
               && responseObject.code == 200) {
 
               // Redirect to user-list.php
               // Iterate over the array of get_user objects
-              $.each(responseObject.get_user, function (index, user) {
+              $.each(responseObject.community_pages, function (index, user) {
                 // Extract properties from the current user object
                 var country = user.country;
-                var cName = user.cName;
-                var cTag = user.cTag;
-                var cDesc = user.cDesc;
-                var cRules = user.cRules;
+                var cName = user.community_name;
+                var cTag = user.community_tag;
+                var cDesc = user.community_description;
+                var cRules = user.community_rules;
                 var admin = user.admin;
 
                 // Generate HTML for the card using the extracted properties
@@ -420,23 +413,21 @@
           var cTag = $("#cTag").val();
           var cDesc = $("#cDesc").val();
           var cRules = $("#cRules").val();
-          var amin = $("#admin").val();
-          
+          var admin = $("#admin").val();          
           var user_id = $("#user_id").text();
-
-
           var data = {
-            "method": "add_home",
-            "Nationality": country,
-            "Community Name": cName,
-            "Community Tag": cTag,
-            "Community Description": cDesc,
-            "Community Rules": cRules,
-            "Admin": admin,
+            "method": "add_community_pages",
+            "nationality": country,
+            "community_name": cName,
+            "community_tag": cTag,
+            "community_description": cDesc,
+            "community_rules": cRules,
+            "admin": admin,
             "user_id": user_id
           };
 
           var formData = new FormData();
+          console.log(data);
           formData.append('data', JSON.stringify(data));
 
           $.ajax({

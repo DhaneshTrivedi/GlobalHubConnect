@@ -38,7 +38,7 @@
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
@@ -206,7 +206,7 @@
               <input type="date" class="form-control" id="eDate" data-parsley-required>
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Time:</label>
+              <label for="eTime" class="col-form-label">Time:</label>
               <input type="time" class="form-control" id="eTime" data-parsley-required>
             </div>
             <div class="form-group">
@@ -334,20 +334,24 @@
             // Replace the navigation item with a dropdown menu
             $("#servicesNavItem").html(
 
-              '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
+             '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
               'aria-haspopup="true" aria-expanded="false">Services</a>' +
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
               '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_chat.html" >Community Chat</a>' +
               '</div>' +
               '</li>'
             );
 
 
+
           }
           else {
+            $("#user_id").text("");
             console.log("Error: " + responseObject);
-            console.log("error");
           }
         },
         error: function (xhr, status, error) {
@@ -359,9 +363,9 @@
       // Perform an action after a delay using jQuery
       setTimeout(function () {
         user_id = $("#user_id").text();
-        var data = {
-          "method": "get_rent_home",
-          "user_id": user_id
+        if(user_id){
+          var data = {
+          "method": "get_community_events"
         };
 
         var formData = new FormData();
@@ -380,30 +384,31 @@
             // Access the status property
             var message = responseObject.message;
 
-            if (message === "Found"
+            if (message === "Community events found"
               && responseObject.code == 200) {
 
               // Redirect to user-list.php
               // Iterate over the array of get_user objects
-              $.each(responseObject.get_user, function (index, user) {
+              $.each(responseObject.rental_homes, function (index, user) {
+                console.log(user.eTitle);
                 // Extract properties from the current user object
-                var eTitle = user.eTitle;
-                var eDesc = user.eDesc;
+                var eTitle = user.event_title;
+                var eDesc = user.event_description;
                 var country = user.country;
                 var state = user.state;
                 var city = user.city;
-                var Address = user.Address;
-                var eDate = user.eDate;
-                var eTime = user.eTime;
-                var eDuration = user.eDuration;
-                var eOrganizer = user.eOrganizer;
-                var eGuest = user.eGuest;
-                var eFee = user.eFee;
-                var eHost = user.eHost;
-                var ePromotion = user.ePromotion;
+                var Address = user.location;
+                var eDate = user.date;
+                var eTime = user.time;
+                var eDuration = user.duration;
+                var eOrganizer = user.event_organizer;
+                var eGuest = user.event_guest;
+                var eFee = user.event_fee;
+                var eHost = user.event_host;
+                var ePromotion = user.event_promotion;
                 var telephone = user.telephone;
                 var email = user.email;
-                var more = user.more;
+                var more = user.additional_information;
 
                 // Generate HTML for the card using the extracted properties
                 var cardHtml = `
@@ -503,6 +508,30 @@
             console.error(error);
           }
         });
+        } else{
+//           $('.Homes-Status').append("<div class='no-users-found'>No users found</div>");
+
+// // Apply styles directly using jQuery
+// $('.no-users-found').css({
+//     'color': '#ff6347',           // Red color
+//     'font-size': '18px',           // Adjust font size
+//     'font-weight': 'bold',         // Make it bold
+//     'text-align': 'center',        // Center align the text
+//     'padding': '10px',             // Add some padding for spacing
+//     'border': '2px solid #ff6347', // Add a border for emphasis
+//     'border-radius': '5px',        // Add rounded corners
+//     'background-color': '#f8d7da', // Light red background color
+//     'margin': '100px auto',         // Center the element horizontally
+//     'max-width': '300px'           // Limit the width of the element
+// });
+
+// // Fade in animation
+// $('.no-users-found').animate({
+//     'opacity': 'show',  // Fade in
+//     'transform': 'scale(10)' // Scale up to original size
+// }, 9000); // Duration: 800 milliseconds
+        }
+       
 
 
       }, 200); // 2000 milliseconds = 2 seconds
@@ -518,7 +547,7 @@
           var state = $("#state").val();
           var city = $("#city").val();
           var Address = $("#Address").val();
-          var eDate = $("eDate").val();
+          var eDate = $("#eDate").val();
           var eTime = $("#eTime").val();
           var eDuration = $("#eDuration").val();
           var eOrganizer = $("#eOrganizer").val();
@@ -534,24 +563,24 @@
 
 
           var data = {
-            "method": "add_home",
-            "Event Title": eTitle,
-            "Event description":eDesc,
+            "method": "add_events",
+            "event_title": eTitle,
+            "event_description":eDesc,
             "country": country,
             "state": state,
             "city": city,
-            "Location": Address,
-            "Date":eDate,
-            "Time":eTime,
+            "location": Address,
+            "date":eDate,
+            "time":eTime,
             "duration": eDuration,
-            "Event Organizer": eOrganizer,
-            "Event Guest":eGuest,
-            "Event Fee":eFee,
-            "Event Host":eHost,
-            "Event Promotion":ePromotion,
-            "Telephone": telephone,
+            "event_organizer": eOrganizer,
+            "event_guest":eGuest,
+            "event_fee":eFee,
+            "event_host":eHost,
+            "event_promotion":ePromotion,
+            "telephone": telephone,
             "email": email,
-            "Additional Information": more,
+            "additional_information": more,
             "user_id": user_id
           };
 
@@ -589,92 +618,92 @@
           });
 
 
-          var cardHtml = `
-        <div class="card shadow my-3">
-            <div class="card-header bg-primary text-white">
-                Details
-            </div>
-            <div class="card-body">
-                <table class="table table-striped">
-                    <tbody>
-                      <tr>
-                            <th scope="row">Event Title:</th>
-                            <td>${eTitle}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Description:</th>
-                            <td>${eDesc}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Country:</th>
-                            <td>${country}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">State:</th>
-                            <td>${state}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">City:</th>
-                            <td>${city}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Location:</th>
-                            <td>${Address}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Dat:</th>
-                            <td>${eDate}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Time:</th>
-                            <td>${eTime}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Duration:</th>
-                            <td>${eDuration}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Organizer:</th>
-                            <td>${eOrganizer}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Guest:</th>
-                            <td>${eGuest}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Fee:</th>
-                            <td>${eFee}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Host:</th>
-                            <td>${eHost}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Event Promotion:</th>
-                            <td>${ePromotion}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Telephone:</th>
-                            <td>${telephone}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Email:</th>
-                            <td>${email}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Additional Information:</th>
-                            <td class="details-td">${more}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    `;
+    //       var cardHtml = `
+    //     <div class="card shadow my-3">
+    //         <div class="card-header bg-primary text-white">
+    //             Details
+    //         </div>
+    //         <div class="card-body">
+    //             <table class="table table-striped">
+    //                 <tbody>
+    //                   <tr>
+    //                         <th scope="row">Event Title:</th>
+    //                         <td>${eTitle}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Description:</th>
+    //                         <td>${eDesc}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Country:</th>
+    //                         <td>${country}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">State:</th>
+    //                         <td>${state}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">City:</th>
+    //                         <td>${city}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Location:</th>
+    //                         <td>${Address}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Dat:</th>
+    //                         <td>${eDate}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Time:</th>
+    //                         <td>${eTime}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Duration:</th>
+    //                         <td>${eDuration}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Organizer:</th>
+    //                         <td>${eOrganizer}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Guest:</th>
+    //                         <td>${eGuest}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Fee:</th>
+    //                         <td>${eFee}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Host:</th>
+    //                         <td>${eHost}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Event Promotion:</th>
+    //                         <td>${ePromotion}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Telephone:</th>
+    //                         <td>${telephone}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Email:</th>
+    //                         <td>${email}</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <th scope="row">Additional Information:</th>
+    //                         <td class="details-td">${more}</td>
+    //                     </tr>
+    //                 </tbody>
+    //             </table>
+    //         </div>
+    //     </div>
+    // `;
 
 
 
           // Append the Bootstrap card to the desired div
-          $('.Homes-Status').append(cardHtml);
+          // $('.Homes-Status').append(cardHtml);
 
         }
       })

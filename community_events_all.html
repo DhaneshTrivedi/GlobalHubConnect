@@ -32,6 +32,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <style>
     .container_acc {
+      margin-top: 20vh;
       width: 90vw;
       display: flex;
       justify-content: center;
@@ -55,51 +56,6 @@
     .dropdown-item:hover {
       font-size: 110%;
       background-color: var(--color-secondary);
-    }
-
-    .search-container{
-        height:17vh;
-        width:100vw;
-        padding-left:20vw;
-        padding-top:10px;
-        position: relative; 
-        display: inline-block; 
-        margin-top:8rem;
-        
-    }
-   
- 
-    .search-container input{
-        border: 3px solid grey;
-        width:55vw;
-        height:8vh;
-        border-radius:30px;
-        padding-left:100px;
-        padding-top:5px;
-        color: grey;
-        font-size: 20px;
-        font-family: "Noto Sans Khojki", sans-serif;
-        font-weight: 400px;
-        font-style: normal;
-        box-shadow: 1px 2px grey;
-    }
-
-    input:focus{
-      border-color: grey;
-    }
-    .send-btn{
-           width:90px;
-           height:8vh;
-           background-color: transparent;
-           color:grey;
-           border:3px solid grey;
-           border-radius:30px;
-           position: absolute; 
-           left: 308px; 
-           border: none; 
-           cursor: pointer;  
-           padding-top:5px;     
-
     }
   </style>
 
@@ -138,13 +94,6 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-
-  <!-- search bar  -->
-  <div class="search-container">
-    <input type="text" id="get-text" placeholder="Search jobs...">
-    <button class="send-btn"><i style="font-size: 27px;" class="fa-solid fa-magnifying-glass"></i></button>
-</div>
-
 
   <!-- container containing accomodation cards -->
   <div class="container_acc">
@@ -226,13 +175,13 @@
   <script>
 
 var data = {
-        "method": "get_all_recruit",
+        "method": "get_all_community_events",
             };
 
-      var formData = new FormData();
-      formData.append('data', JSON.stringify(data));
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
 
-  $.ajax({
+    $.ajax({
         url: "http://localhost/GlobalHubConnect/api/v1/",
         type: "POST",
         data: formData,
@@ -240,9 +189,9 @@ var data = {
         contentType: false, // Prevent jQuery from automatically setting the content type
 
         success: function (response) {
-          var responseObject = JSON.parse(response);
-          var message = responseObject.message;
-          if (message === "Jobs found"
+            var responseObject = JSON.parse(response);
+            var message = responseObject.message;
+            if (message === "Events found"
             && responseObject.code == 200) {
                 var responseData = JSON.parse(response);
                 displayRentHomeData(responseData.rental_homes);
@@ -259,23 +208,22 @@ function displayRentHomeData(rentHomeData) {
     var rentHomeHTML = "";
     
     // LOOP start
-    $count=1
     $.each(rentHomeData, function(index, rentHome) {
-      rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
-      rentHomeHTML += '<div class="card-body">';
-      rentHomeHTML += '<h5 class="card-title">Job '+ $count +'</h5>';
-      rentHomeHTML += '<p class="card-text">';
-      rentHomeHTML += '<ul>';
-      rentHomeHTML += '<li>Job title: ' + rentHome.jobTitle + '</li>';
-      rentHomeHTML += '<li>Salary: ' + rentHome.salary + '</li>';
-      rentHomeHTML += '<li>Location: ' + rentHome.location + '</li>';
-      rentHomeHTML += '<li>Qualification: ' + rentHome.qualification + '</li>';
-      rentHomeHTML += '</ul>';
-      rentHomeHTML += '</p>';
-      rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
-      rentHomeHTML += '</div>';
-      rentHomeHTML += '</div>';
-      $count = $count+1;
+        rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
+        rentHomeHTML += '<div class="card-body">';
+        rentHomeHTML += '<h5 class="card-title">Event Name</h5>';
+        rentHomeHTML += '<p class="card-text">';
+        rentHomeHTML += '<ul>';
+        rentHomeHTML += '<li>Title: ' + rentHome.event_title + '</li>';
+        rentHomeHTML += '<li>Description: ' + rentHome.event_description + '</li>';
+        rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
+        rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
+        rentHomeHTML += '<li>Date: ' + rentHome.date + '</li>';
+        rentHomeHTML += '</ul>';
+        rentHomeHTML += '</p>';
+        rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
+        rentHomeHTML += '</div>';
+        rentHomeHTML += '</div>';
     });
 
 
@@ -289,7 +237,7 @@ function displayRentHomeData(rentHomeData) {
     // rentHomeHTML += "</table>";
     $(".container_acc").html(rentHomeHTML);
 }
-  </script>
+</script>
 
 
 </body>
