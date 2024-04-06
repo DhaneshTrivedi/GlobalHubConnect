@@ -31,14 +31,12 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <style>
-    
-
     .dropdown-menu {
       background-color: var(--color-secondary);
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
@@ -46,110 +44,114 @@
       background-color: var(--color-secondary);
     }
 
-    .main-container{
-        display: flex;
-        float: left;
-        margin-top:105px;
-        
-    }
-
-    .left-container{
-        border: 1px solid black;
-        height:85vh;
-        width:25vw;
-        padding:7px 7px;
-    }
-    .right{
-          width:70vw;
-    }
-    .right-container{
-        border: 1px solid black;
-        height:68vh;
-        width:75vw;
-        padding:7px 7px;
+    .main-container {
+      display: flex;
+      float: left;
+      margin-top: 105px;
 
     }
-    .right-bottom-container{
-        height:17vh;
-        width:75vw;
-        padding:10px 10px;
-        display: flex;
-        float:left;
-    }
-   
- 
-     .input0{
-        border: 3px solid grey;
-        border-right:none;
-        width:60vw;
-        height:10vh;
-        border-top-left-radius:30px ;
-        padding:5px 5px;
-        color: grey;
-        font-size: 20px;
-        font-family: "Noto Sans Khojki", sans-serif;
-        font-weight: 400;
-        font-style: normal;
+
+    .left-container {
+      border: 1px solid black;
+      height: 85vh;
+      width: 25vw;
+      padding: 7px 7px;
     }
 
-    .input0:focus{
+    .right {
+      width: 70vw;
+    }
+
+    .right-container {
+      border: 1px solid black;
+      height: 68vh;
+      width: 75vw;
+      padding: 7px 7px;
+
+    }
+
+    .right-bottom-container {
+      height: 17vh;
+      width: 75vw;
+      padding: 10px 10px;
+      display: flex;
+      float: left;
+    }
+
+
+    .input0 {
+      border: 3px solid grey;
+      border-right: none;
+      width: 60vw;
+      height: 10vh;
+      border-top-left-radius: 30px;
+      padding: 5px 5px;
+      color: grey;
+      font-size: 20px;
+      font-family: "Noto Sans Khojki", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .input0:focus {
       border-color: grey;
     }
-    .send-btn{
-           width:110px;
-           height:10vh;
-           background-color: blue;
-           color:white;
-           border-top:3px solid grey;
-           border-bottom:3px solid grey;
-           border-right:3px solid grey;
-         
-           border-bottom-right-radius: 30px;
+
+    .send-btn {
+      width: 110px;
+      height: 10vh;
+      background-color: blue;
+      color: white;
+      border-top: 3px solid grey;
+      border-bottom: 3px solid grey;
+      border-right: 3px solid grey;
+
+      border-bottom-right-radius: 30px;
 
     }
 
-    .search-container{
-        height:17vh;
-        width:100vw;
-        padding-top:10px;
-        position: relative; 
-        display: inline-block; 
-        margin-left:20px;
-        
-    }
-   
- 
-.input1{
-        border: 3px solid grey;
-        width:22vw;
-        height:7vh;
-        border-radius:30px;
-        padding-left:60px;
-        padding-top:5px;
-        color: grey;
-        font-size: 17px;
-        font-family: "Noto Sans Khojki", sans-serif;
-        font-weight: 400px;
-        font-style: normal;
-        box-shadow: 1px 2px grey;
+    .search-container {
+      height: 17vh;
+      width: 100vw;
+      padding-top: 10px;
+      position: relative;
+      display: inline-block;
+      margin-left: 20px;
+
     }
 
-    .input1:focus{
+
+    .input1 {
+      border: 3px solid grey;
+      width: 22vw;
+      height: 7vh;
+      border-radius: 30px;
+      padding-left: 60px;
+      padding-top: 5px;
+      color: grey;
+      font-size: 17px;
+      font-family: "Noto Sans Khojki", sans-serif;
+      font-weight: 400px;
+      font-style: normal;
+      box-shadow: 1px 2px grey;
+    }
+
+    .input1:focus {
       border-color: grey;
     }
-    .send-btn1{
-           width:50px;
-           height:7vh;
-           background-color:transparent;
-           color:grey;
-           border:3px solid grey;
-           border-radius:30px;
-           position: absolute; 
-           left: 0px; 
-           border: none; 
-           cursor: pointer;  
-           padding-top:5px;     
 
+    .send-btn1 {
+      width: 50px;
+      height: 7vh;
+      background-color: transparent;
+      color: grey;
+      border: 3px solid grey;
+      border-radius: 30px;
+      position: absolute;
+      left: 0px;
+      border: none;
+      cursor: pointer;
+      padding-top: 5px;
     }
   </style>
 
@@ -157,63 +159,59 @@
 
 <body>
 
-   <!-- ======= Header ======= -->
-   <header id="header" class="header d-flex align-items-center fixed-top"
-   style="background-color: rgba(14, 29, 52, 0.9);">
-   <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top"
+    style="background-color: rgba(14, 29, 52, 0.9);">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-     <a href="index.html" class="logo d-flex align-items-center">
-       <!-- Uncomment the line below if you also wish to use an image logo -->
-       <img src="assets/img/logo.png" alt="">
-       <h1><span style="color:green;">G</span>lobal<span style="color:brown;">H</span>ub<span
-           style="color:blue;">C</span>onnect</h1>
-     </a>
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/logo.png" alt="">
+        <h1><span style="color:green;">G</span>lobal<span style="color:brown;">H</span>ub<span
+            style="color:blue;">C</span>onnect</h1>
+      </a>
 
-     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-     <nav id="navbar" class="navbar">
-       <ul>
-         <li><a href="index.html" class="active">Home</a></li>
-         <li><a href="about.html">About</a></li>
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-             Services
-           </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item " style="color:white;font-size:14px; " href="Rent-Home.html">Rent Home</a>
-             <a class="dropdown-item" style="color:white;font-size:14px; " href="Recruite.html">Recruite</a>
-             <a class="dropdown-item " style="color:white; font-size:14px; " href="community_pages.html">community pages</a>
-             <a class="dropdown-item" style="color:white;font-size:14px; " href="community_events.html">community events</a>
-           </div>
-         </li>
-         <li><a href="pricing.html">Pricing</a></li>
-         <li><a href="contact.html">Contact</a></li>
-         <li><a class="get-a-quote" href="login.html">Logout</a></li>
-       </ul>
-     </nav><!-- .navbar -->
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li id="servicesNavItem" class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="get-a-quote" href="login.html">Logout</a></li>
+        </ul>
+      </nav><!-- .navbar -->
 
-   </div>
- </header><!-- End Header -->
- <!-- End Header -->
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
 
-<div class=" main-container">
-<div class="left-container">
-  <div class="search-container">
-    <input class="input1" type="text" id="get-text" placeholder="search communiy...">
-    <button class="send-btn1"><i style="font-size: 17px;" class="fa-solid fa-magnifying-glass"></i></button>
-</div>
-</div>
-<div class="right">
-<div class="right-container">Gujju community</div>
-<div class="right-bottom-container">
-    <hr>
+  <div class=" main-container">
+    <div class="left-container">
+      <div class="search-container">
+        <input class="input1" type="text" id="get-text" placeholder="search communiy...">
+        <button class="send-btn1"><i style="font-size: 17px;" class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="community"></div>
+    </div>
+    <div class="right">
+      <div class="right-container">
+        <div class="events">
+
+        </div>
+      </div>
+      <div class="right-bottom-container">
+        <hr>
         <input class="input0" type="text" id="get-text" placeholder="Type here...">
         <button class="send-btn"><i style="font-size: 31px;" class="fa-solid fa-paper-plane"></i></button>
-</div>
-</div>
+      </div>
+    </div>
 
-</div>
+  </div>
 
 
 
@@ -274,15 +272,16 @@
             // Add the classes "nav-item" and "dropdown" to #servicesNavItem
             $("#servicesNavItem").addClass("nav-item dropdown");
             // Replace the navigation item with a dropdown menu
-             $("#servicesNavItem").html(
+            $("#servicesNavItem").html(
 
               '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
               'aria-haspopup="true" aria-expanded="false">Services</a>' +
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
               '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
-              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>'+
-              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>'+
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_chat.html" >Community Chat</a>' +
               '</div>' +
               '</li>'
             );
@@ -301,7 +300,174 @@
         }
       });
 
+      call_community_pages();
+
     })
+
+    function call_community_pages() {
+      var data = {
+        "method": "get_all_community_pages",
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          // Access the status property
+          var message = responseObject.message;
+
+          if (message === "Pages found"
+            && responseObject.code == 200) {
+            var responseData = responseObject.rental_homes;
+            // Clear existing community names if any
+            $(".left-container .community").empty();
+
+            // Iterate over each community and append it to the left container
+            responseData.forEach(function (community) {
+              var communityHTML = '<div class="community-item" data-id="' + community.state + '">' + community.community_name + '</div>';
+              $(".left-container .community").append(communityHTML);
+            });
+
+            // Handle click event on community
+            $(".community-item").click(function () {
+              var communityId = $(this).data("id");
+              fetchEventsForCommunity(communityId);
+            });
+
+            // Handle click event on community
+            // $(".community").click(function () {
+            //   var communityId = $(this).data("id");
+            //   fetchEventsForCommunity(communityId);
+            // });
+
+            // Add CSS for community section
+            $(".left-container .community").css({
+              "overflow-y": "auto"
+            });
+
+            // Add CSS for individual community items
+            $(".community-item").css({
+              "background-color": "#f1f1f1",
+              "border-radius": "10px",
+              "padding": "10px",
+              "margin-bottom": "20px",
+              "cursor": "pointer",
+              "border": "1px solid black" // Add this line
+            });
+
+            // Add CSS for active community
+            $(".community-item.active").css({
+              "background-color": "blue",
+              "color": "white"
+            });
+
+            // Add CSS for chat container
+            $(".chat-container").css({
+              "border": "1px solid #ccc",
+              "padding": "10px",
+              "margin-top": "10px",
+              "max-height": "300px",
+              "overflow-y": "auto"
+            });
+
+            // Add CSS for individual events
+            $(".event").css({
+              "background-color": "#f9f9f9",
+              "border-radius": "10px",
+              "padding": "10px",
+              "margin": "5px 0"
+            });
+
+          }
+          else {
+            console.log("Error: " + responseObject);
+            console.log("error");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
+    }
+
+    function fetchEventsForCommunity(communityId) {
+      // Make API call to fetch events for the selected community
+
+      var data = {
+        "method": "get_community_by_state",
+        "state": communityId,
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          // Access the status property
+          var message = responseObject.message;
+
+          if (message === "Events found"
+            && responseObject.code == 200) {
+            var eventsInfo = responseObject.events_info;
+
+            // Clear existing event information if any
+            $(".right-container .events").empty();
+
+            // Iterate over each event and append it to the right container
+            eventsInfo.forEach(function (event) {
+              var eventHTML = '<div class="card mb-3" >' +
+                '<div class="card-body">' +
+                '<h5 class="card-title">' + event.event_title + '</h5>' +
+                '<h6 class="card-subtitle mb-2 text-muted">' + event.city + ', ' + event.country + '</h6>' +
+                '<p class="card-text">' + event.event_description + '</p>' +
+                '<ul class="list-group list-group-flush">' +
+                '<li class="list-group-item">Date: ' + event.date + '</li>' +
+                '<li class="list-group-item">Time: ' + event.time + '</li>' +
+                '<li class="list-group-item">Duration: ' + event.duration + '</li>' +
+                '<li class="list-group-item">Event Host: ' + event.event_host + '</li>' +
+                '<li class="list-group-item">Event Organizer: ' + event.event_organizer + '</li>' +
+                '<li class="list-group-item">Event Fee: ' + event.event_fee + '</li>' +
+                '<li class="list-group-item">Event Promotion: ' + event.event_promotion + '</li>' +
+                '<li class="list-group-item">Event Guest: ' + event.event_guest + '</li>' +
+                '<li class="list-group-item">Location: ' + event.location + '</li>' +
+                '<li class="list-group-item">State: ' + event.state + '</li>' +
+                '<li class="list-group-item">Telephone: ' + event.telephone + '</li>' +
+                '<li class="list-group-item">Email: ' + event.email + '</li>' +
+                '</ul>' +
+                '</div>' +
+                '</div>';
+              $(".right-container .events").append(eventHTML);
+            });
+          }
+          else {
+            console.log("Error: " + responseObject);
+            console.log("error");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
+    }
 
     function logout() {
 
@@ -351,7 +517,7 @@
 
     }
 
-    
+
   </script>
 
 

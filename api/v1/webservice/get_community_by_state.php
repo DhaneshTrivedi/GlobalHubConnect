@@ -8,17 +8,19 @@ class WebService extends GeneralClass
         parent::__construct();
     }
 
-    public function get_all_community_pages()
+    public function get_community_by_state()
     {
         $data = (object) $this->params;
+        $state = $this->requiredParameter($data, 'state', "state  is required");
         $data = null;
         // Fetch all rental home data
-        $rentalHomes = $this->db->get("community_pages", null, array("id","community_name", "state","country", "community_description"));
+        $this->db->where("state", $state);
+        $events_info = $this->db->get("community_events");
 
         // Check if any rental homes were found
-        if (!$rentalHomes) {
+        if (!$events_info) {
             $ResponseData = array(
-                "message" => "No pages found",
+                "message" => "No events found",
                 "code" => FAILED,
                 "status" => $this->translate('STATUS_FAILD')
             );
@@ -27,10 +29,10 @@ class WebService extends GeneralClass
 
         // Rental homes found, prepare response
         $ResponseData = array(
-            "message" => "Pages found",
+            "message" => "Events found",
             'status' => $this->translate('STATUS_SUCCESS'),
             "code" => SUCCESS,
-            "rental_homes" => $rentalHomes
+            "events_info" => $events_info
         );
         $this->responseReturn($ResponseData);
     }
