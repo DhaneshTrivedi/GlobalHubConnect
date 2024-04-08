@@ -75,6 +75,24 @@
       font-size: 110%;
       background-color: var(--color-secondary);
     }
+    .card{
+      background-color: var(--color-secondary);
+      
+    }
+    .card:hover{
+      transform: scale(1.03);
+      transition-property: transform;
+      transition-duration: 0.3s;
+      box-shadow: 5px 3px black;
+      cursor: pointer;
+
+    }
+    .service-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap:2rem;
+    }
   </style>
 
 </head>
@@ -124,10 +142,51 @@
   </div>
   <div class="welcome_dp">
     <?php
-    echo '<img src="assets/img/team/dhanesh-P.jpeg" style="width:415px; height:400px; object-fit: cover; object-position: top center;" class="img-fluid" alt="">';
+    echo '<img  src="assets/img/team/dhanesh-P.jpeg" style="width: 415px; height:400px; object-fit: cover; object-position: top center;" class="img-fluid" alt="">';
     ?>
   </div>
 
+
+  <!-- services ui  -->
+  <!-- 1 -->
+  <div class="service-container">
+  <div class="card" style="width: 16rem;">
+  <img src="assets\img\rent-home-img.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-info">Rent-Home</h5>
+    <p class="card-text" style="color:white;">Want to give your home on rent?</p>
+    <a href="Rent-Home.html" class="btn btn-primary">click here!</a>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="card" style="width: 16rem;">
+  <img src="assets\img\hire-img.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-info">Recruite</h5>
+    <p class="card-text" style="color:white;">Want to hire someone for some fit role?</p>
+    <a href="Recruite.html" class="btn btn-primary">click here!</a>
+  </div>
+</div>
+<!-- 3 -->
+<div class="card" style="width: 16rem;">
+  <img src="assets\img\community-page-img.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-info">Community Page</h5>
+    <p class="card-text" style="color:white;">Want to build a community abroad?</p>
+    <a href="Rent-Home.html" class="btn btn-primary">click here!</a>
+  </div>
+</div>
+<!-- 4 -->
+<div class="card" style="width: 16rem;">
+  <img src="assets\img\upcoming-events-img.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-info">Community Event</h5>
+    <p class="card-text" style="color:white;">Want to host an event for the community members?</p>
+    <a href="Rent-Home.html" class="btn btn-primary">click here!</a>
+  </div>
+</div>
+  </div>
   <!-- container containing accomodation cards -->
 
 
@@ -154,8 +213,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About us</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
