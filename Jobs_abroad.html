@@ -270,10 +270,10 @@ function displayRentHomeData(rentHomeData) {
       rentHomeHTML += '<li>Salary: ' + rentHome.salary + '</li>';
       rentHomeHTML += '<li>Location: ' + rentHome.location + '</li>';
       rentHomeHTML += '<li>Qualification: ' + rentHome.qualification + '</li>';
-      rentHomeHTML += '<li>Email: t.smit170360@gmail.com </li>';
+      rentHomeHTML += '<li>Email: '+ rentHome.email+' </li>';
       rentHomeHTML += '</ul>';
       rentHomeHTML += '</p>';
-      rentHomeHTML += '<a href="mailto:t.smit170360@gmail.com?subject=Interested%20in%20Job%20Profile&body=Job title:%20' + rentHome.jobTitle + '%0ASalary:%20' + rentHome.salary + '%0ALocation:%20' + rentHome.location + '%0AQualification:%20' + rentHome.qualification + '" style="width:100%; " class="btn btn-primary apply-btn">Apply</a>';
+      rentHomeHTML += '<a href="mailto:'+ rentHome.email +'?subject=Interested%20in%20Job%20Profile&body=Job title:%20' + rentHome.jobTitle + '%0ASalary:%20' + rentHome.salary + '%0ALocation:%20' + rentHome.location + '%0AQualification:%20' + rentHome.qualification + '" style="width:100%; " class="btn btn-primary apply-btn">Apply</a>';
       rentHomeHTML += '</div>';
       rentHomeHTML += '</div>';
       $count = $count+1;
