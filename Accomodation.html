@@ -259,21 +259,64 @@ function displayRentHomeData(rentHomeData) {
     
     // LOOP start
     $.each(rentHomeData, function(index, rentHome) {
-      rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
-      rentHomeHTML += '<div class="card-body">';
-      rentHomeHTML += '<h5 class="card-title">Apartment Name</h5>';
-      rentHomeHTML += '<p class="card-text">';
-      rentHomeHTML += '<ul>';
-      rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
-      rentHomeHTML += '<li>State: ' + rentHome.state + '</li>';
-      rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
-      rentHomeHTML += '<li>Rooms: ' + rentHome.bhk + '</li>';
-      rentHomeHTML += '<li>Rent: ' + rentHome.rent + '</li>';
-      rentHomeHTML += '</ul>';
-      rentHomeHTML += '</p>';
-      rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
-      rentHomeHTML += '</div>';
-      rentHomeHTML += '</div>';
+      
+      // original :
+      // rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
+      // rentHomeHTML += '<div class="card-body">';
+      // rentHomeHTML += '<h5 class="card-title">Apartment Name</h5>';
+      // rentHomeHTML += '<p class="card-text">';
+      // rentHomeHTML += '<ul>';
+      // rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
+      // rentHomeHTML += '<li>State: ' + rentHome.state + '</li>';
+      // rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
+      // rentHomeHTML += '<li>Rooms: ' + rentHome.bhk + '</li>';
+      // rentHomeHTML += '<li>Rent: ' + rentHome.rent + '</li>';
+      // rentHomeHTML += '<li>Email: t.smit170360@gmail.com </li>';
+      // rentHomeHTML += '</ul>';
+      // rentHomeHTML += '</p>';
+      // rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
+      // rentHomeHTML += '</div>';
+      // rentHomeHTML += '</div>';
+
+      // try:
+      // Inside displayRentHomeData function
+$.each(rentHomeData, function(index, rentHome) {
+  rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
+  rentHomeHTML += '<div class="card-body">';
+  rentHomeHTML += '<h5 class="card-title">Apartment Name</h5>';
+  rentHomeHTML += '<p class="card-text">';
+  rentHomeHTML += '<ul>';
+  rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
+  rentHomeHTML += '<li>State: ' + rentHome.state + '</li>';
+  rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
+  rentHomeHTML += '<li>Rooms: ' + rentHome.bhk + '</li>';
+  rentHomeHTML += '<li>Rent: ' + rentHome.rent + '</li>';
+  rentHomeHTML += '<li>Email: t.smit170360@gmail.com </li>';
+  rentHomeHTML += '</ul>';
+  rentHomeHTML += '</p>';
+  rentHomeHTML += '<a href="mailto:t.smit170360@gmail.com?subject=Interested%20in%20Renting%20Property&body=Country:%20' + rentHome.country + '%0AState:%20' + rentHome.state + '%0ACity:%20' + rentHome.city + '%0ARooms:%20' + rentHome.bhk + '%0ARent:%20' + rentHome.rent + '" style="width:100%; " class="btn btn-primary deal-btn">Deal</a>';
+  rentHomeHTML += '</div>';
+  rentHomeHTML += '</div>';
+});
+
+$(".container_acc").html(rentHomeHTML);
+
+$(".deal-btn").click(function(event) {
+  event.preventDefault(); 
+  
+  const email = "t.smit170360@gmail.com";
+  const subject = "Interested in Renting Property";
+  const body = `
+    Country: ${$(this).siblings().find("li:contains('Country:')").text().trim()}
+    State: ${$(this).siblings().find("li:contains('State:')").text().trim()}
+    City: ${$(this).siblings().find("li:contains('City:')").text().trim()}
+    Rooms: ${$(this).siblings().find("li:contains('Rooms:')").text().trim()}
+    Rent: ${$(this).siblings().find("li:contains('Rent:')").text().trim()}
+  `;
+
+  
+});
+
     });
 
 

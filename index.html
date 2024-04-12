@@ -961,6 +961,9 @@ form.addEventListener("submit", (e) => {
 
     if(inputValue == '' || inputValue == ' '){
     count_display.style.display = 'flex';
+    list.remove('red');
+    list.remove('green');
+    available.style.display ='none';
   }
   else{
     count_display.style.display = "none";
