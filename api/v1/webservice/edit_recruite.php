@@ -8,21 +8,22 @@ class WebService extends GeneralClass
         parent::__construct();
     }
 
-    public function edit_home_api()
+    public function edit_recruite()
     {
         $data = (object) $this->params;
         $id = $this->requiredParameter($data, 'id', "id is required");
-        $country = $this->requiredParameter($data, 'country', "country is required");
-        $state = $this->requiredParameter($data, 'state', "state is required");
-        $city = $this->requiredParameter($data, 'city', "city should not be empty");
-        $bhk = $this->requiredParameter($data, 'bhk', "bhk should not be empty");
-        $duration = $this->requiredParameter($data, 'duration', "duration should not be empty");
-        $address = $this->requiredParameter($data, 'address', "address is required");
-        $telephone = $this->requiredParameter($data, 'telephone', "telephone is required");
-        $email = $this->requiredParameter($data, 'email', "email should not be empty");
-        $details = $this->requiredParameter($data, 'details', "details should not be empty");
-        $rent = $this->requiredParameter($data, 'rent', "rent should not be empty");
-
+        $jobTitle = $this->requiredParameter($data, 'jobTitle', "jobTitle  is required");
+        $jobDesc = $this->requiredParameter($data, 'jobDesc', "jobDesc  is required");
+        $companyDesc = $this->requiredParameter($data, 'companyDesc', "companyDesc should not be empty");
+        $location = $this->requiredParameter($data, 'location', "location should not be empty");
+        $salary = $this->requiredParameter($data, 'salary', "duration should not be empty");
+        $qualification = $this->requiredParameter($data, 'qualification', "address is required");
+        $experience = $this->requiredParameter($data, 'experience', "telephone is required");
+        $due = $this->requiredParameter($data, 'due', "due should not be empty");
+        $apply = $this->requiredParameter($data, 'apply', "apply should not be empty");
+        $countryCode = $this->requiredParameter($data, 'countryCode', "countryCode should not be empty");
+        $telephone  = $this->requiredParameter($data, 'telephone', "telephone should not be empty");
+        $email  = $this->requiredParameter($data, 'email', "email should not be empty");
         // Handle file uploads
         // $photo_urls = [];
         // if (!empty($_FILES['photos']['name'])) {
@@ -46,21 +47,23 @@ class WebService extends GeneralClass
 
         // Add other form data
         $data = array(
-            "country" => $country,
-            "state" => $state,
-            'city' => $city,
-            "bhk" => $bhk,
-            "duration" => $duration,
-            "address" => $address,
-            'telephone' => $telephone,
-            'email' => $email,
-            'details' => $details,
-            'rent' => $rent,
+            "jobTitle" => $jobTitle,
+            "jobDesc" => $jobDesc,
+            'companyDesc' => $companyDesc,
+            "location" => $location,
+            "salary" => $salary,
+            "qualification" => $qualification,
+            'experience' => $experience,
+            'due' => $due,
+            'apply' => $apply,
+            "email"=>$email,
+            'countryCode' => $countryCode,
+            'telephone'=>$telephone,
         );
         $this->db->where('id', $id);
-        $edit_home_id = $this->db->update('rent_home', $data);
+        $edit_recruite_id = $this->db->update('recruite', $data);
 
-        if (!$edit_home_id) {
+        if (!$edit_recruite_id) {
             $ResponseData = array(
                 "message" => $this->translate('REGISTRATION_FAILED'),
                 "code" => FAILED,
