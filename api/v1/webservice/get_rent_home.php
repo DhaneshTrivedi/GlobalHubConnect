@@ -39,12 +39,25 @@ class WebService extends GeneralClass
     {
         $this->db->where("user_id", $id);
         $result = $this->db->get("rent_home");
-        if (empty ($result)) {
+
+        if (empty($result)) {
             return false;
         } else {
+            foreach ($result as &$row) {
+                // Check if photo_urls is not null or empty
+                if (!empty($row['photo_urls'])) {
+                    $row['photo_urls'] = is_array($row['photo_urls']) ? $row['photo_urls'] : explode(',', $row['photo_urls']);
+                } else {
+                    $row['photo_urls'] = []; // Set to empty array if null or empty
+                }
+            }
+            unset($row); // Unset the reference to the last element to avoid any potential issues
+
             return $result;
         }
     }
+
+
 
 
 }

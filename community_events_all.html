@@ -99,7 +99,7 @@
   <div class="container_acc">
     <!-- <div class="rentHomeData" id="rentHomeData"></div> -->
     <!-- 1 -->
-    
+
   </div>
   <!-- End of container_acc  -->
 
@@ -174,41 +174,41 @@
 
   <script>
 
-var data = {
-        "method": "get_all_community_events",
-            };
+    var data = {
+      "method": "get_all_community_events",
+    };
 
-        var formData = new FormData();
-        formData.append('data', JSON.stringify(data));
+    var formData = new FormData();
+    formData.append('data', JSON.stringify(data));
 
     $.ajax({
-        url: "http://localhost/GlobalHubConnect/api/v1/",
-        type: "POST",
-        data: formData,
-        processData: false, // Prevent jQuery from processing the data
-        contentType: false, // Prevent jQuery from automatically setting the content type
+      url: "http://localhost/GlobalHubConnect/api/v1/",
+      type: "POST",
+      data: formData,
+      processData: false, // Prevent jQuery from processing the data
+      contentType: false, // Prevent jQuery from automatically setting the content type
 
-        success: function (response) {
-            var responseObject = JSON.parse(response);
-            var message = responseObject.message;
-            if (message === "Events found"
-            && responseObject.code == 200) {
-                var responseData = JSON.parse(response);
-                displayRentHomeData(responseData.rental_homes);
-            } else {
-                console.error("Error:", responseData.message);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("Error:", error);
+      success: function (response) {
+        var responseObject = JSON.parse(response);
+        var message = responseObject.message;
+        if (message === "Events found"
+          && responseObject.code == 200) {
+          var responseData = JSON.parse(response);
+          displayRentHomeData(responseData.rental_homes);
+        } else {
+          console.error("Error:", responseData.message);
         }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      }
     });
 
-function displayRentHomeData(rentHomeData) {
-    var rentHomeHTML = "";
-    
-    // LOOP start
-    $.each(rentHomeData, function(index, rentHome) {
+    function displayRentHomeData(rentHomeData) {
+      var rentHomeHTML = "";
+
+      // LOOP start
+      $.each(rentHomeData, function (index, rentHome) {
         rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
         rentHomeHTML += '<div class="card-body">';
         rentHomeHTML += '<h5 class="card-title">Event Name</h5>';
@@ -224,20 +224,20 @@ function displayRentHomeData(rentHomeData) {
         rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
         rentHomeHTML += '</div>';
         rentHomeHTML += '</div>';
-    });
+      });
 
 
-    // $.each(rentHomeData, function(index, rentHome) {
-    //     rentHomeHTML += "<tr>";
-    //     rentHomeHTML += "<td>" + rentHome.country + "</td>";
-    //     rentHomeHTML += "<td>" + rentHome.state + "</td>";
-    //     rentHomeHTML += "</tr>";
-    // });
+      // $.each(rentHomeData, function(index, rentHome) {
+      //     rentHomeHTML += "<tr>";
+      //     rentHomeHTML += "<td>" + rentHome.country + "</td>";
+      //     rentHomeHTML += "<td>" + rentHome.state + "</td>";
+      //     rentHomeHTML += "</tr>";
+      // });
 
-    // rentHomeHTML += "</table>";
-    $(".container_acc").html(rentHomeHTML);
-}
-</script>
+      // rentHomeHTML += "</table>";
+      $(".container_acc").html(rentHomeHTML);
+    }
+  </script>
 
 
 </body>

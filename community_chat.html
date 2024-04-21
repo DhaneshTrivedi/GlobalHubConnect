@@ -64,18 +64,78 @@
 
     .right-container {
       border: 1px solid black;
-      height: 68vh;
+      height: 60vh;
+      /* Reduced height to allow space for Type here section */
       width: 75vw;
-      padding: 7px 7px;
-
+      padding: 7px 50px;
+      overflow-y: auto;
+      /* Added to make it scrollable */
     }
 
     .right-bottom-container {
-      height: 17vh;
+      height: 25vh;
+      /* Increased height to allow more space for Type here section */
       width: 75vw;
       padding: 10px 10px;
       display: flex;
       float: left;
+      align-items: center;
+      /* Vertically align items */
+    }
+
+    .comments {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+
+    .comments-container {
+      margin-top: 20px;
+    }
+
+    .comment {
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+      background-color: #f9f9f9;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .comment-author {
+      font-weight: bold;
+    }
+
+    .comment-date {
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .comment-content p {
+      margin: 0;
+    }
+
+    .no-comments {
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      color: #777;
+    }
+
+    .comment-header h5 {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+      border-radius: 5px 5px 0 0;
     }
 
 
@@ -182,7 +242,7 @@
           </li>
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a class="get-a-quote" href="login.html">Logout</a></li>
+
         </ul>
       </nav><!-- .navbar -->
 
@@ -200,18 +260,21 @@
     </div>
     <div class="right">
       <div class="right-container">
-        <div class="events">
+        <div class="events"></div>
+        <div class="comments-container"></div>
 
-        </div>
       </div>
       <div class="right-bottom-container">
-        <hr>
-        <input class="input0" type="text" id="get-text" placeholder="Type here...">
-        <button class="send-btn"><i style="font-size: 31px;" class="fa-solid fa-paper-plane"></i></button>
+        <form id="comment-form">
+          <input class="input0" type="text" id="comment-text" placeholder="Type here...">
+          <button type="submit" class="send-btn" id="send_chat"><i style="font-size: 31px;"
+              class="fa-solid fa-paper-plane"></i></button>
+        </form>
       </div>
-    </div>
 
+    </div>
   </div>
+
 
 
 
@@ -302,7 +365,54 @@
 
       call_community_pages();
 
+
+      $("#comment-form").submit(function (event) {
+        event.preventDefault();
+        var commentText = $("#comment-text").val();
+        var eventId = $(".event_id_for_chat").data("event-id"); // Assuming you have an active community item
+
+        postComment(eventId, commentText);
+      });
+
+
     })
+
+    function postComment(eventId, commentText) {
+      user_id = $("#user_id").text();
+      var data = {
+        "method": "post_comment",
+        "event_id": eventId,
+        "text": commentText,
+        "user_id": user_id
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+          var message = responseObject.message;
+
+          if (message === "Comment posted" && responseObject.code == 200) {
+            // Clear and refresh comments
+            location.reload();
+          } else {
+            console.log("Error posting comment: " + responseObject);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+        }
+      });
+    }
+
 
     function call_community_pages() {
       var data = {
@@ -342,10 +452,10 @@
 
             // Handle click event on community
             $(".community-item").click(function () {
-              var communityId = $(this).data("id");
-              var communityItemId = $(this).find('.community-id').text();
-
-              fetchEventsForCommunity(communityId,communityItemId);
+              var communityId = $(this).data("id"); //this is the users id who made the community 
+              var communityItemId = $(this).find('.community-id').text(); //this is the name of the state
+              ///We are assuming that while making community page or event for the first time a single user will make page based on state
+              fetchEventsForCommunity(communityId, communityItemId);
             });
 
             // Handle click event on community
@@ -405,13 +515,13 @@
       });
     }
 
-    function fetchEventsForCommunity(communityId,communityItemId) {
+    function fetchEventsForCommunity(communityId, communityItemId) {
       // Make API call to fetch events for the selected community
 
       var data = {
         "method": "get_community_by_state",
         "state": communityId,
-        "user_id":communityItemId
+        "user_id": communityItemId
       };
 
       var formData = new FormData();
@@ -433,14 +543,14 @@
           if (message === "Events found"
             && responseObject.code == 200) {
             var eventsInfo = responseObject.events_info;
-            print("hello");
+
             // Clear existing event information if any
             $(".right-container .events").empty();
 
             // Iterate over each event and append it to the right container
             eventsInfo.forEach(function (event) {
-              var eventHTML = '<div class="card mb-3" >' +
-                '<div class="card-body">' +
+              var eventHTML = '<div class="card mb-3 event_id_for_chat" data-event-id="' + event.id + '">' +
+                '<input type="hidden" class="event-id" value="' + event.id + '">' + // Hidden input field
                 '<h5 class="card-title">' + event.event_title + '</h5>' +
                 '<h6 class="card-subtitle mb-2 text-muted">' + event.city + ', ' + event.country + '</h6>' +
                 '<p class="card-text">' + event.event_description + '</p>' +
@@ -461,6 +571,9 @@
                 '</div>' +
                 '</div>';
               $(".right-container .events").append(eventHTML);
+
+              // Fetch and display comments for the current event
+              fetchCommentsForEvent(event.id);
             });
           }
           else {
@@ -471,6 +584,71 @@
         error: function (xhr, status, error) {
           // Handle errors
           console.error(error);
+        }
+      });
+    }
+
+    function fetchCommentsForEvent(eventId) {
+      var data = {
+        "method": "get_comments_by_event",
+        "event_id": eventId
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          if (responseObject.code == 200 && responseObject.comments) {
+            comments = responseObject.comments;
+            var commentsContainer = $(".comments-container");
+            commentsContainer.empty();
+
+            var commentsHeaderHTML = `
+        <div class="comment-header">
+            <h5>Comments</h5>
+        </div>`;
+            commentsContainer.append(commentsHeaderHTML);
+
+            if (comments.length > 0) {
+              comments.forEach(function (comment) {
+                var commentHTML = `
+                <div class="comment">
+                    <div class="comment-content">
+                        <p>${comment.text}</p>
+                    </div>
+                </div>`;
+                commentsContainer.append(commentHTML);
+              });
+            } else {
+              var noCommentHTML = `
+            <div class="no-comments">
+                <p>No comments found for this event.</p>
+            </div>`;
+              commentsContainer.append(noCommentHTML);
+            }
+          }
+          else {
+            $(".comments-container").empty();
+            var commentHTML = '<div class="comment">' +
+              '<p> No comments found for this event </p>' +
+              // '<span class="comment-date">' + comment.comment_date + '</span>' +
+              '</div>';
+
+            $(".comments-container").append(commentHTML);
+            console.log("No comments found for event with ID:", eventId);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching comments:", error);
         }
       });
     }

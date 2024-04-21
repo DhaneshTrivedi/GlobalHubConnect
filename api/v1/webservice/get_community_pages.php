@@ -11,8 +11,10 @@ class WebService extends GeneralClass
     public function get_community_pages()
     {
         $data = (object) $this->params;
+        $user_id = $this->requiredParameter($data, 'user_id', "user_id should not be empty");
         $data = null;
         // Fetch all rental home data
+        $this->db->where('user_id', $user_id);
         $community_pages = $this->db->get("community_pages");
 
         // Check if any rental homes were found

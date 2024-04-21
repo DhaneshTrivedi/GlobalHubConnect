@@ -113,6 +113,20 @@
       height: 90px;
       overflow-y: scroll;
     }
+
+    .carousel-image {
+      height: 300px;
+      /* Set your desired height */
+      width: 550px;
+      margin: 0 auto;
+      /* Center the image */
+    }
+
+    .carousel-inner {
+      height: 300px;
+      width: 550px;
+      /* Set the same height as the carousel images */
+    }
   </style>
 
 
@@ -685,10 +699,7 @@
             // Access the status property
             var message = responseObject.message;
 
-            if (message === "Found"
-              && responseObject.code == 200) {
-
-              // Redirect to user-list.php
+            if (message === "Found" && responseObject.code == 200) {
               // Iterate over the array of get_user objects
               $.each(responseObject.get_user, function (index, user) {
                 // Extract properties from the current user object
@@ -703,76 +714,114 @@
                 var rent = user.rent;
                 var details = user.details;
                 var id = user.id;
+                var photo_urls = user.photo_urls; // Assuming photo_urls is an array of image filenames
+
+                // Initialize carousel items HTML
+                var carouselItemsHtml = '';
+
+                // Check if photo_urls is present and is not null or empty
+                if (photo_urls && photo_urls.length > 0) {
+                  photo_urls.forEach(function (photo, idx) {
+                    var imagePath = `api/v1/${photo}`; // Construct the image path
+                    var activeClass = idx === 0 ? 'active' : ''; // Add active class to the first item
+                    carouselItemsHtml += `
+                    <div class="carousel-item ${activeClass}">
+                        <img src="${imagePath}" class="d-block w-100 carousel-image" alt="Property Image">
+                    </div>
+                `;
+                  });
+                } else {
+                  // If no photos are available, display a default image or message
+                  carouselItemsHtml += `
+                <div class="carousel-item active">
+                    <img src="path/to/default/image.jpg" class="d-block w-100 carousel-image" alt="No Image Available">
+                </div>
+            `;
+                }
 
                 // Generate HTML for the card using the extracted properties
                 var cardHtml = `
-        <div class="card shadow my-3">
-            <div class="card-header bg-primary text-white">
-                Details
+            <div class="card shadow my-3">
+                <div class="card-header bg-primary text-white">
+                    Details
+                </div>
+                <div id="carouselExampleIndicators${id}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        ${carouselItemsHtml}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators${id}" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators${id}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tbody>
+                            <!-- Property details rows -->
+                            <tr>
+                                <th scope="row">Country</th>
+                                <td>${country}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">State</th>
+                                <td>${state}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">City</th>
+                                <td>${city}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">BHK</th>
+                                <td>${bhk}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Duration</th>
+                                <td>${duration}</td>
+                            </tr>
+                            <tr>
+                                <th class="address-th" scope="row">Address</th>
+                                <td>${address}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Telephone</th>
+                                <td>${telephone}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>${email}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Rent-INR</th>
+                                <td>${rent}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Details</th>
+                                <td class="details-td">${details}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ID</th>
+                                <td><input type="hidden" class="property-id" value="${id}">${id}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Buttons -->
+                    <div class="text-end">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal" id="edit-btn">Edit</button>
+                        <button type="button" class="btn btn-danger delete-btn" id="delete_btn">Delete</button>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <th scope="row">Country</th>
-                            <td>${country}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">State</th>
-                            <td>${state}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">City</th>
-                            <td>${city}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">BHK</th>
-                            <td>${bhk}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Duration</th>
-                            <td>${duration}</td>
-                        </tr>
-                        <tr>
-                            <th class="address-th" scope="row">Address</th>
-                            <td>${address}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Telephone</th>
-                            <td>${telephone}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Email</th>
-                            <td>${email}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Rent-INR</th>
-                            <td>${rent}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Details</th>
-                            <td class="details-td">${details}</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">ID</th>
-                        <td><input type="hidden" class="property-id" value="${id}">${id}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="text-end">
-                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#editModal" id="edit-btn">Edit</button>
-                <button type="button" class="btn btn-danger delete-btn" id="delete_btn">Delete</button>
-            </div>
-            </div>
-        </div>
-    `;
+        `;
 
                 // Append the Bootstrap card to the desired div
                 $('.Homes-Status').append(cardHtml);
               });
-
-
             }
+
             else {
               console.log("error");
             }
@@ -1045,7 +1094,7 @@
                 && responseObject.code == 200) {
 
                 // Redirect to user-list.php
-                // location.reload();
+                location.reload();
 
               }
               else {

@@ -26,7 +26,7 @@ class WebService extends GeneralClass
         // Handle file uploads
         $photo_urls = [];
         if (!empty($_FILES['photos']['name'])) {
-            $targetDir = "uploads/";
+            $targetDir = "homes/";
             if (!is_dir($targetDir)) {
                 mkdir($targetDir, 0777, true);
             }
@@ -57,8 +57,11 @@ class WebService extends GeneralClass
             'details' => $details,
             'rent' => $rent,
             'user_id' => $user_id,
-            'photo_urls' => json_encode($photo_urls) // Save photo URLs as JSON
         );
+
+        $serialized_photo_urls = implode(',', $photo_urls);
+        $data['photo_urls'] = $serialized_photo_urls;
+
 
         $add_home_id = $this->db->insert('rent_home', $data);
 

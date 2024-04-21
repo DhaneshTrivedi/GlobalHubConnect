@@ -655,7 +655,8 @@
         user_id = $("#user_id").text();
         if (user_id) {
           var data = {
-            "method": "get_community_events"
+            "method": "get_community_events",
+            "user_id": user_id
           };
 
           var formData = new FormData();
@@ -1001,7 +1002,7 @@
             console.error(error);
           }
         });
-      }); 
+      });
 
 
 
