@@ -106,7 +106,7 @@
             opportunities, and vibrant communities.</p>
 
           <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" class="form-control" placeholder="Enter Country">
+            <input type="text" class="form-control" placeholder="Enter Country/State/City">
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
 
@@ -122,7 +122,7 @@
 
             <div class="col-lg-3 col-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="60" data-purecounter-duration="1.2"
+                <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="1.2"
                   class="purecounter"></span>
                 <p>States</p>
               </div>
@@ -130,7 +130,7 @@
 
             <div class="col-lg-3 col-6">
               <div class="stats-item text-center w-100 h-100">
-                <span data-purecounter-start="0" data-purecounter-end="250" data-purecounter-duration="1.2"
+                <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1.2"
                   class="purecounter"></span>
                 <p>Cities</p>
               </div>
@@ -932,46 +932,45 @@
     }
 
     // checking for country service available :
-
-const form = document.querySelector('form');
+    const form = document.querySelector('form');
 const Input = document.querySelector(".form-control");
-const countryList = ["USA", "Canada", "UK", "Australia", "Germany", "France", "Japan", "China", "Brazil", "India"];
+const countryList = ["USA", "Canada", "UK", "Australia", "Germany", "France", "Japan", "China", "Brazil", "India", "Mexico", "Singapore"];
+const stateList = ["Alberta", "British Columbia", "California", "Florida", "Gujarat", "Illinois", "Karnataka", "Kerala", "Maharashtra", "Manitoba", "New South Wales", "New York", "Ohio", "Ontario", "Pennsylvania", "Quebec", "Rajasthan", "Shandong", "Tamil Nadu", "Texas", "Uttar Pradesh", "Victoria", "Western Australia", "Yorkshire"];
+const cityList = ["Ahmedabad", "Austin", "Baltimore", "Bangalore", "Barcelona", "Beijing", "Boston", "Brisbane", "Cairo", "Calgary", "Cape Town", "Chennai", "Chicago", "Dallas", "Delhi", "Detroit", "Dubai", "Dublin", "Edinburgh", "Glasgow", "Guangzhou", "Houston", "Hyderabad", "Istanbul", "Jaipur", "Jakarta", "Jerusalem", "Karachi", "Kolkata", "London", "Los Angeles", "Manchester", "Melbourne", "Mexico City", "Miami", "Mumbai", "New York City", "Paris", "Philadelphia", "Phoenix", "Pune", "San Francisco", "Seattle", "Shanghai", "Singapore", "Sydney", "Tokyo", "Toronto", "Vancouver", "Washington, D.C.", "Wuhan"];
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent form submission
-  const inputValue = Input.value.trim().toUpperCase(); // Trim and convert input to uppercase
-  let count_display = document.querySelector(".count_display");
-  let available = document.querySelector(".available");
-  let list = available.classList;
-  
-  // Check if the input value exactly matches any country in the countryList
-  const matchedCountry = countryList.find(country => country.toUpperCase() === inputValue);
+    e.preventDefault(); // Prevent form submission
+    const inputValue = Input.value.trim().toUpperCase(); // Trim and convert input to uppercase
+    let count_display = document.querySelector(".count_display");
+    let available = document.querySelector(".available");
+    let list = available.classList;
 
+    // Check if the input value exactly matches any country, state, or city in the respective lists
+    const matchedCountry = countryList.find(country => country.toUpperCase() === inputValue);
+    const matchedState = stateList.find(state => state.toUpperCase() === inputValue);
+    const matchedCity = cityList.find(city => city.toUpperCase() === inputValue);
 
-  // Display search result if an exact match is found
-  if (matchedCountry) {
-    console.log("Country match found:", matchedCountry);
-    count_display.style.display = "none";
-    available.innerHTML = "All Services available in " + inputValue;
-    list.add("green");
-    list.remove('red');
-    // Perform further actions with the matched country if needed
-  }
-  else{
-
-    if(inputValue == '' || inputValue == ' '){
-    count_display.style.display = 'flex';
-    list.remove('red');
-    list.remove('green');
-    available.style.display ='none';
-  }
-  else{
-    count_display.style.display = "none";
-    available.innerHTML = "we are comming soon at " + inputValue;
-    list.add('red');
-    list.remove('green')
-  }
-  }
+    // Display search result if an exact match is found
+    if (matchedCountry || matchedState || matchedCity) {
+        console.log("Match found:", matchedCountry || matchedState || matchedCity);
+        count_display.style.display = "none";
+        available.innerHTML = "All Services available in " + inputValue;
+        list.add("green");
+        list.remove('red');
+        // Perform further actions with the matched country, state, or city if needed
+    } else {
+        if (inputValue == '' || inputValue == ' ') {
+            count_display.style.display = 'flex';
+            list.remove('red');
+            list.remove('green');
+            available.style.display = 'none';
+        } else {
+            count_display.style.display = "none";
+            available.innerHTML = "We are coming soon at " + inputValue;
+            list.add('red');
+            list.remove('green');
+        }
+    }
 });
 
   </script>
