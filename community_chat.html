@@ -333,14 +333,19 @@
 
             // Iterate over each community and append it to the left container
             responseData.forEach(function (community) {
-              var communityHTML = '<div class="community-item" data-id="' + community.state + '">' + community.community_name + '</div>';
+              var communityHTML = '<div class="community-item" data-id="' + community.state + '">' +
+                '<div class="community-id" style="display: none;">' + community.user_id + '</div>' +
+                community.community_name +
+                '</div>';
               $(".left-container .community").append(communityHTML);
             });
 
             // Handle click event on community
             $(".community-item").click(function () {
               var communityId = $(this).data("id");
-              fetchEventsForCommunity(communityId);
+              var communityItemId = $(this).find('.community-id').text();
+
+              fetchEventsForCommunity(communityId,communityItemId);
             });
 
             // Handle click event on community
@@ -400,12 +405,13 @@
       });
     }
 
-    function fetchEventsForCommunity(communityId) {
+    function fetchEventsForCommunity(communityId,communityItemId) {
       // Make API call to fetch events for the selected community
 
       var data = {
         "method": "get_community_by_state",
         "state": communityId,
+        "user_id":communityItemId
       };
 
       var formData = new FormData();
@@ -427,7 +433,7 @@
           if (message === "Events found"
             && responseObject.code == 200) {
             var eventsInfo = responseObject.events_info;
-
+            print("hello");
             // Clear existing event information if any
             $(".right-container .events").empty();
 

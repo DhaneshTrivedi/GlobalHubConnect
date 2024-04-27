@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 class WebService extends GeneralClass
 {
@@ -11,8 +11,8 @@ class WebService extends GeneralClass
     public function add_home()
     {
         $data = (object) $this->params;
-        $country = $this->requiredParameter($data, 'country', "country  is required");
-        $state = $this->requiredParameter($data, 'state', "state  is required");
+        $country = $this->requiredParameter($data, 'country', "country is required");
+        $state = $this->requiredParameter($data, 'state', "state is required");
         $city = $this->requiredParameter($data, 'city', "city should not be empty");
         $bhk = $this->requiredParameter($data, 'bhk', "bhk should not be empty");
         $duration = $this->requiredParameter($data, 'duration', "duration should not be empty");
@@ -21,24 +21,30 @@ class WebService extends GeneralClass
         $email = $this->requiredParameter($data, 'email', "email should not be empty");
         $details = $this->requiredParameter($data, 'details', "details should not be empty");
         $rent = $this->requiredParameter($data, 'rent', "rent should not be empty");
-        $user_id  = $this->requiredParameter($data, 'user_id', "user_id should not be empty");
+        $user_id = $this->requiredParameter($data, 'user_id', "user_id should not be empty");
 
-        $data = null;
+        // Handle file uploads
+        $photo_urls = [];
+        if (!empty($_FILES['photos']['name'])) {
+            $targetDir = "uploads/";
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+            foreach ($_FILES['photos']['name'] as $key => $value) {
+                $fileName = basename($_FILES['photos']['name'][$key]);
+                $targetFilePath = $targetDir . $fileName;
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    if (move_uploaded_file($_FILES['photos']['tmp_name'][$key], $targetFilePath)) {
+                        $photo_urls[] = $targetFilePath;
+                    }
+                }
+            }
+        }
 
-        // $get_email = $this->getEmail($email);
-        // if ($get_email) {
-        //     $ResponseData = array(
-        //         "message" => "This email is already register",
-        //         "code" => FAILED,
 
-        //     );
-        //     $this->responseReturn($ResponseData);
-        // }
-
-
-        $datetime = DATETIME;
-
-        // add users data in users
+        // Add other form data
         $data = array(
             "country" => $country,
             "state" => $state,
@@ -50,18 +56,11 @@ class WebService extends GeneralClass
             'email' => $email,
             'details' => $details,
             'rent' => $rent,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'photo_urls' => json_encode($photo_urls) // Save photo URLs as JSON
         );
 
         $add_home_id = $this->db->insert('rent_home', $data);
-
-        /* $sql = "INSERT INTO `login`.`users` (`email`, `password`, `signup_with`, `verification_code`, `device_id`, `device_type`, `created`, `updated`)
-        VALUES ($email, $password, $email, $verification_code, $device_id, $device_type, $datetime, $datetime)";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("ssssssss", $email, $password, 'email', $verification_code, $device_id, $device_type, $datetime, $datetime);
-        $stmt->execute();
-        $user_id = $stmt->insert_id;
-        $stmt->close();*/
 
         if (!$add_home_id) {
             $ResponseData = array(
@@ -71,7 +70,6 @@ class WebService extends GeneralClass
             );
             $this->responseReturn($ResponseData);
         }
-
 
         $ResponseData = array(
             "message" => $this->translate('REGISTRATION_SUCCESS'),
@@ -87,7 +85,7 @@ class WebService extends GeneralClass
     {
         $this->db->where("email", $email);
         $result = $this->db->getOne("users", "id");
-        if (empty ($result)) {
+        if (empty($result)) {
             return false;
         } else {
             return $result;
@@ -96,4 +94,4 @@ class WebService extends GeneralClass
 
 
 }
-?>
+?> -->

@@ -13,7 +13,7 @@ class WebService extends GeneralClass
         $data = (object) $this->params;
         $data = null;
         // Fetch all rental home data
-        $rentalHomes = $this->db->get("community_pages", null, array("id","community_name", "state","country", "community_description"));
+        $rentalHomes = $this->db->get("community_pages", null, array("id","user_id","community_name", "state","country", "community_description"));
 
         // Check if any rental homes were found
         if (!$rentalHomes) {
