@@ -270,6 +270,114 @@
   </div>
   <!-- Modal ends -->
 
+  <!-- Edit Modal -->
+  <div class="modal fade bd-example-modal-lg" id="editRecruiteModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fill Job Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editRecruiteModalForm">
+            <div class="form-group">
+
+              <div class="form-group">
+                <label for="editJobTitle" class="col-form-label">Job Title:</label>
+                <input type="text" class="form-control" id="editJobTitle" data-parsley-required>
+              </div>
+
+              <div class="form-group">
+                <label for="editJobDesc" class="col-form-label">Job Description:</label>
+                <textarea class="form-control" id="editJobDesc" data-parsley-required
+                  data-parsley-minlength=10></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="editCompanyDesc" class="col-form-label">Company Information:</label>
+                <textarea class="form-control" id="editCompanyDesc" data-parsley-required
+                  data-parsley-minlength=10></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="editLocation" class="col-form-label">Location:</label>
+                <input type="text" class="form-control" id="editLocation" data-parsley-required>
+              </div>
+
+              <div class="form-group">
+                <label for="editSalary" class="col-form-label">Salary and Benefits:</label>
+                <input type="text" class="form-control" id="editSalary" data-parsley-required>
+              </div>
+
+              <div class="form-group">
+                <label for="editQualification" class="col-form-label">Qualification and Requirements:</label>
+                <textarea class="form-control" id="editQualification" data-parsley-required
+                  data-parsley-minlength=10></textarea>
+              </div>
+
+              <select class="form-select mb-3" name="Experience" id="editExperience" data-parsley-required
+                data-parsley-error-message="Please select the Experience tenure">
+                <option value="">Work Experience</option>
+                <option value="1-3 Months">Fresher</option>
+                <option value="3-6 Months">0-1 year</option>
+                <option value="6-9 Months">0-2 year</option>
+                <option value="9-12 Months">2+ year</option>
+              </select>
+
+              <div class="form-group">
+                <label for="editDue" class="col-form-label">Application Deadline:</label>
+                <input type="date" class="form-control" id="editDue" data-parsley-required>
+              </div>
+
+              <div class="form-group">
+                <label for="editHowToApply" class="col-form-label">How to Apply:</label>
+                <textarea class="form-control" id="editHowToApply" data-parsley-required
+                  data-parsley-minlength=10></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="editEmail" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="editEmail" data-parsley-required>
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="EditCountryCode" class="col-form-label">Telephone</label>
+              <div class="input-group">
+
+                <select name="countryCode" id="EditCountryCode" class="form-control" data-parsley-required
+                  data-parsley-trigger="change" data-parsley-error-message="Please select a country code">
+                  <option value="">Select Country Code</option>
+                  <option value="+1">United States (+1)</option>
+                  <option value="+91">India (+91)</option>
+                  <option value="+44">United Kingdom (+44)</option>
+                  <!-- Add more options as needed -->
+                </select>
+                <input type="tel" class="form-control" id="editTelephone" data-parsley-required
+                  data-parsley-type="digits" data-parsley-length="[10, 10]"
+                  data-parsley-error-message="Please enter a 10-digit phone number">
+              </div>
+              <!-- <label for="recipient-name" class="col-form-label">Telephone</label>
+            <input type="tel" class="form-control" id="Telephone" data-parsley-required data-parsley-type="number"> -->
+            </div>
+
+
+          </form>
+          <input type="hidden" id="jobModalId">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" id="EditPostSubmit" class="btn btn-primary">Post Job</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <div class="Homes-Status"></div>
   <div id="user_id" style="display: none;"></div>
@@ -332,15 +440,15 @@
             // Add the classes "nav-item" and "dropdown" to #servicesNavItem
             $("#servicesNavItem").addClass("nav-item dropdown");
             // Replace the navigation item with a dropdown menu
-             $("#servicesNavItem").html(
+            $("#servicesNavItem").html(
 
               '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
               'aria-haspopup="true" aria-expanded="false">Services</a>' +
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
               '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
-              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>'+
-              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>'+
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
               '</div>' +
               '</li>'
             );
@@ -401,6 +509,7 @@
                 var email = user.email;
                 var countryCode = user.countryCode;
                 var telephone = user.telephone;
+                var id = user.id;
 
                 // Generate card HTML
                 var cardHtml = `
@@ -457,7 +566,12 @@
                     </tr>
                 </tbody>
             </table>
+            <input type="hidden" id="${id}">
             <button class="apply-btn btn btn-primary">Apply Now</button>
+            <div class="text-end">
+        <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editRecruiteModal" id="editRecruite">Edit</button>
+        <button class="delete-btn btn btn-danger" id="deleteRecruite">Delete</button>
+    </div>
         </div>
     </div>
     `;
@@ -481,9 +595,140 @@
 
       }, 200); // 2000 milliseconds = 2 seconds
 
+      $(document).on('click', '#editRecruite', function () {
+        // Fetch details from the selected card
+        var jobTitle = $(this).closest('.card').find('.card-body td:eq(0)').text();
+        var jobDesc = $(this).closest('.card').find('.card-body td.desc:eq(0)').text();
+        var companyDesc = $(this).closest('.card').find('.card-body td.desc:eq(1)').text();
+        var location = $(this).closest('.card').find('.card-body td:eq(3)').text();
+        var salary = $(this).closest('.card').find('.card-body td:eq(4)').text();
+        var qualification = $(this).closest('.card').find('.card-body td.desc:eq(2)').text();
+        var experience = $(this).closest('.card').find('.card-body td:eq(6)').text();
+        var due = $(this).closest('.card').find('.card-body td:eq(7)').text();
+        var apply = $(this).closest('.card').find('.card-body td.desc:eq(3)').text();
+        var email = $(this).closest('.card').find('.card-body td:eq(9)').text();
+        var telephone = $(this).closest('.card').find('.card-body td:eq(10)').text();
+        var jobId = $(this).closest('.card').find('.card-body input[type="hidden"]').attr('id');
 
+        // Populate the edit modal with fetched details
+        $('#editJobTitle').val(jobTitle);
+        $('#editJobDesc').val(jobDesc);
+        $('#editCompanyDesc').val(companyDesc);
+        $('#editLocation').val(location);
+        $('#editSalary').val(salary);
+        $('#editQualification').val(qualification);
+        $('#editExperience').val(experience);
+        $('#editDue').val(due);
+        $('#editHowToApply').val(apply);
+        $('#editEmail').val(email);
+        $('#jobModalId').val(jobId);
 
+        // Set telephone and country code separately
+        var countryCode = telephone.split(' ')[0];
+        var phoneNumber = telephone.split(' ')[1];
+        $('#EditCountryCode').val(countryCode);
+        $('#editTelephone').val(phoneNumber);
+      });
 
+      $(document).on('click', '#EditPostSubmit', function () {
+        // Fetch the updated values from the edit modal
+        var data = {
+          method: "edit_recruite",
+          id: $('#jobModalId').val(),
+          jobTitle: $('#editJobTitle').val(),
+          jobDesc: $('#editJobDesc').val(),
+          companyDesc: $('#editCompanyDesc').val(),
+          location: $('#editLocation').val(),
+          salary: $('#editSalary').val(),
+          qualification: $('#editQualification').val(),
+          experience: $('#editExperience').val(),
+          due: $('#editDue').val(),
+          apply: $('#editHowToApply').val(),
+          email: $('#editEmail').val(),
+          countryCode: $('#EditCountryCode').val(),
+          telephone: $('#editTelephone').val()
+        };
+
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "edited successfully"
+              && responseObject.code == 200) {
+              alert("Edited successfully");
+              location.reload();
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
+
+      $(document).on('click', '#deleteRecruite', function () {
+
+        var jobId = $(this).closest('.card').find('.card-body input[type="hidden"]').attr('id');
+
+        // Create the data object to send in the AJAX request
+        var data = {
+          method: "delete_recruite",
+          id: jobId
+        };
+
+        // Make the AJAX request
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "deleted successfully"
+              && responseObject.code == 200) {
+
+              alert("Deleted successfully");
+              location.reload();
+
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
 
       $('#submit-card').click(function () {
         event.preventDefault(); // Prevent the default form submission behavior

@@ -195,7 +195,7 @@
                 <option value="Mexico">Mexico</option>
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="USA">USA</option>
-                
+
               </select>
               <select class="form-select mb-3" name="State" id="state" data-parsley-required
                 data-parsley-error-message="Please select a state">
@@ -235,62 +235,62 @@
                 <option value="Wales">Wales</option>
                 <option value="Western Australia">Western Australia</option>
                 <option value="Yorkshire">Yorkshire</option>
-                
+
               </select>
               <select class="form-select mb-3" name="City" id="city" data-parsley-required
                 data-parsley-error-message="Please select a city">
                 <option value="">City</option>
                 <option value="Ahmedabad">Ahmedabad</option>
-<option value="Austin">Austin</option>
-<option value="Baltimore">Baltimore</option>
-<option value="Bangalore">Bangalore</option>
-<option value="Barcelona">Barcelona</option>
-<option value="Beijing">Beijing</option>
-<option value="Boston">Boston</option>
-<option value="Brisbane">Brisbane</option>
-<option value="Cairo">Cairo</option>
-<option value="Calgary">Calgary</option>
-<option value="Cape Town">Cape Town</option>
-<option value="Chennai">Chennai</option>
-<option value="Chicago">Chicago</option>
-<option value="Dallas">Dallas</option>
-<option value="Delhi">Delhi</option>
-<option value="Detroit">Detroit</option>
-<option value="Dubai">Dubai</option>
-<option value="Dublin">Dublin</option>
-<option value="Edinburgh">Edinburgh</option>
-<option value="Glasgow">Glasgow</option>
-<option value="Guangzhou">Guangzhou</option>
-<option value="Houston">Houston</option>
-<option value="Hyderabad">Hyderabad</option>
-<option value="Istanbul">Istanbul</option>
-<option value="Jaipur">Jaipur</option>
-<option value="Jakarta">Jakarta</option>
-<option value="Jerusalem">Jerusalem</option>
-<option value="Karachi">Karachi</option>
-<option value="Kolkata">Kolkata</option>
-<option value="London">London</option>
-<option value="Los Angeles">Los Angeles</option>
-<option value="Manchester">Manchester</option>
-<option value="Melbourne">Melbourne</option>
-<option value="Mexico City">Mexico City</option>
-<option value="Miami">Miami</option>
-<option value="Mumbai">Mumbai</option>
-<option value="New York City">New York City</option>
-<option value="Paris">Paris</option>
-<option value="Philadelphia">Philadelphia</option>
-<option value="Phoenix">Phoenix</option>
-<option value="Pune">Pune</option>
-<option value="San Francisco">San Francisco</option>
-<option value="Seattle">Seattle</option>
-<option value="Shanghai">Shanghai</option>
-<option value="Singapore">Singapore</option>
-<option value="Sydney">Sydney</option>
-<option value="Tokyo">Tokyo</option>
-<option value="Toronto">Toronto</option>
-<option value="Vancouver">Vancouver</option>
-<option value="Washington, D.C.">Washington, D.C.</option>
-<option value="Wuhan">Wuhan</option>
+                <option value="Austin">Austin</option>
+                <option value="Baltimore">Baltimore</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Boston">Boston</option>
+                <option value="Brisbane">Brisbane</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Calgary">Calgary</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Detroit">Detroit</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Dublin">Dublin</option>
+                <option value="Edinburgh">Edinburgh</option>
+                <option value="Glasgow">Glasgow</option>
+                <option value="Guangzhou">Guangzhou</option>
+                <option value="Houston">Houston</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="London">London</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Manchester">Manchester</option>
+                <option value="Melbourne">Melbourne</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Miami">Miami</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="New York City">New York City</option>
+                <option value="Paris">Paris</option>
+                <option value="Philadelphia">Philadelphia</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="Pune">Pune</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Washington, D.C.">Washington, D.C.</option>
+                <option value="Wuhan">Wuhan</option>
 
               </select>
             </div>
@@ -339,7 +339,7 @@
               <label for="recipient-name" class="col-form-label">Telephone:</label>
               <input type="number" class="form-control" id="telephone" data-parsley-required>
             </div>
-            
+
             <div class="form-group">
               <label for="message-text" class="col-form-label">Assitional Information:</label>
               <textarea class="form-control" id="more" data-parsley-required data-parsley-minlength=10></textarea>
@@ -355,6 +355,205 @@
     </div>
   </div>
   <!-- Modal ends -->
+
+  <!-- edit modal -->
+
+  <div class="modal fade bd-example-modal-lg" id="edit_event_modal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Event Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editCommunityForm">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Event Title:</label>
+              <input type="text" class="form-control" id="edit_eTitle" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Event description:</label>
+              <textarea class="form-control" id="edit_eDesc" data-parsley-required data-parsley-minlength=10></textarea>
+            </div>
+            <div class="form-group">
+              <select class="form-select mb-3" name="edit_country" id="edit_country" data-parsley-required
+                data-parsley-error-message="Please select a country">
+                <option value="">Country</option>
+                <option value="Australia">Australia</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Canada">Canada</option>
+                <option value="China">China</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="India">India</option>
+                <option value="Japan">Japan</option>
+                <option value="Mexico">Mexico</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="USA">USA</option>
+
+              </select>
+              <select class="form-select mb-3" name="edit_state" id="edit_state" data-parsley-required
+                data-parsley-error-message="Please select a state">
+                <option value="">State</option>
+                <option value="Alberta">Alberta</option>
+                <option value="Beijing">Beijing</option>
+                <option value="British Columbia">British Columbia</option>
+                <option value="California">California</option>
+                <option value="England">England</option>
+                <option value="Florida">Florida</option>
+                <option value="Guangdong">Guangdong</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Hokkaido">Hokkaido</option>
+                <option value="Honshu">Honshu</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="London">London</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="New South Wales">New South Wales</option>
+                <option value="New York">New York</option>
+                <option value="Northern Ireland">Northern Ireland</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Shandong">Shandong</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Texas">Texas</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Victoria">Victoria</option>
+                <option value="Wales">Wales</option>
+                <option value="Western Australia">Western Australia</option>
+                <option value="Yorkshire">Yorkshire</option>
+
+              </select>
+              <select class="form-select mb-3" name="edit_City" id="edit_city" data-parsley-required
+                data-parsley-error-message="Please select a city">
+                <option value="">City</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Austin">Austin</option>
+                <option value="Baltimore">Baltimore</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Boston">Boston</option>
+                <option value="Brisbane">Brisbane</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Calgary">Calgary</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Detroit">Detroit</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Dublin">Dublin</option>
+                <option value="Edinburgh">Edinburgh</option>
+                <option value="Glasgow">Glasgow</option>
+                <option value="Guangzhou">Guangzhou</option>
+                <option value="Houston">Houston</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="London">London</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Manchester">Manchester</option>
+                <option value="Melbourne">Melbourne</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Miami">Miami</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="New York City">New York City</option>
+                <option value="Paris">Paris</option>
+                <option value="Philadelphia">Philadelphia</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="Pune">Pune</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Washington, D.C.">Washington, D.C.</option>
+                <option value="Wuhan">Wuhan</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Location:</label>
+              <input type="text" class="form-control" id="edit_Address" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Date:</label>
+              <input type="date" class="form-control" id="edit_eDate" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="eTime" class="col-form-label">Time:</label>
+              <input type="time" class="form-control" id="edit_eTime" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Duration:</label>
+              <input type="text" class="form-control" id="edit_eDuration" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Event Organizer:</label>
+              <input type="text" class="form-control" id="edit_eOrganizer" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Event Guest:</label>
+              <input type="text" class="form-control" id="edit_eGuest" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Event Fee:</label>
+              <input type="text" class="form-control" id="edit_eFee" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Event Host:</label>
+              <input type="text" class="form-control" id="edit_eHost" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Event Promotion:</label>
+              <input type="text" class="form-control" id="edit_ePromotion" data-parsley-required>
+            </div>
+
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="edit_email" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Telephone:</label>
+              <input type="number" class="form-control" id="edit_telephone" data-parsley-required>
+            </div>
+
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Additional Information:</label>
+              <textarea class="form-control" id="edit_more" data-parsley-required data-parsley-minlength=10></textarea>
+            </div>
+            <input type="hidden" id="modal_events_id">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" id="edit_community_events_button" class="btn btn-primary">Edit Event</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="Homes-Status"></div>
@@ -431,7 +630,7 @@
             // Replace the navigation item with a dropdown menu
             $("#servicesNavItem").html(
 
-             '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
+              '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
               'aria-haspopup="true" aria-expanded="false">Services</a>' +
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
@@ -460,55 +659,57 @@
       // Perform an action after a delay using jQuery
       setTimeout(function () {
         user_id = $("#user_id").text();
-        if(user_id){
+        if (user_id) {
           var data = {
-          "method": "get_community_events"
-        };
+            "method": "get_community_events",
+            "user_id": user_id
+          };
 
-        var formData = new FormData();
-        formData.append('data', JSON.stringify(data));
+          var formData = new FormData();
+          formData.append('data', JSON.stringify(data));
 
-        $.ajax({
-          url: "http://localhost/GlobalHubConnect/api/v1/",
-          type: "POST",
-          data: formData,
-          processData: false, // Prevent jQuery from processing the data
-          contentType: false, // Prevent jQuery from automatically setting the content type
+          $.ajax({
+            url: "http://localhost/GlobalHubConnect/api/v1/",
+            type: "POST",
+            data: formData,
+            processData: false, // Prevent jQuery from processing the data
+            contentType: false, // Prevent jQuery from automatically setting the content type
 
-          success: function (response) {
-            var responseObject = JSON.parse(response);
+            success: function (response) {
+              var responseObject = JSON.parse(response);
 
-            // Access the status property
-            var message = responseObject.message;
+              // Access the status property
+              var message = responseObject.message;
 
-            if (message === "Community events found"
-              && responseObject.code == 200) {
+              if (message === "Community events found"
+                && responseObject.code == 200) {
 
-              // Redirect to user-list.php
-              // Iterate over the array of get_user objects
-              $.each(responseObject.rental_homes, function (index, user) {
-                console.log(user.eTitle);
-                // Extract properties from the current user object
-                var eTitle = user.event_title;
-                var eDesc = user.event_description;
-                var country = user.country;
-                var state = user.state;
-                var city = user.city;
-                var Address = user.location;
-                var eDate = user.date;
-                var eTime = user.time;
-                var eDuration = user.duration;
-                var eOrganizer = user.event_organizer;
-                var eGuest = user.event_guest;
-                var eFee = user.event_fee;
-                var eHost = user.event_host;
-                var ePromotion = user.event_promotion;
-                var telephone = user.telephone;
-                var email = user.email;
-                var more = user.additional_information;
+                // Redirect to user-list.php
+                // Iterate over the array of get_user objects
+                $.each(responseObject.rental_homes, function (index, user) {
+                  console.log(user.eTitle);
+                  // Extract properties from the current user object
+                  var eTitle = user.event_title;
+                  var eDesc = user.event_description;
+                  var country = user.country;
+                  var state = user.state;
+                  var city = user.city;
+                  var Address = user.location;
+                  var eDate = user.date;
+                  var eTime = user.time;
+                  var eDuration = user.duration;
+                  var eOrganizer = user.event_organizer;
+                  var eGuest = user.event_guest;
+                  var eFee = user.event_fee;
+                  var eHost = user.event_host;
+                  var ePromotion = user.event_promotion;
+                  var telephone = user.telephone;
+                  var email = user.email;
+                  var more = user.additional_information;
+                  var id = user.id;
 
-                // Generate HTML for the card using the extracted properties
-                var cardHtml = `
+                  // Generate HTML for the card using the extracted properties
+                  var cardHtml = `
         <div class="card shadow my-3">
             <div class="card-header bg-primary text-white">
                 Details
@@ -584,17 +785,172 @@
                             <th scope="row">Additional Information:</th>
                             <td class="details-td">${more}</td>
                         </tr>
+                      
                     </tbody>
                 </table>
+                <div class="text-end">
+            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#edit_event_modal" id="edit_event">Edit</button>
+            <button type="button" class="btn btn-danger " id="delete_community_events_btn">Delete</button>
+            <input type="hidden" class="events-id" value="${id}">${id}
+        </div>
             </div>
         </div>
     `;
 
-                // Append the Bootstrap card to the desired div
-                $('.Homes-Status').append(cardHtml);
-              });
+                  // Append the Bootstrap card to the desired div
+                  $('.Homes-Status').append(cardHtml);
+                });
 
 
+              }
+              else {
+                console.log("error");
+              }
+            },
+            error: function (xhr, status, error) {
+              // Handle errors
+              console.error(error);
+            }
+          });
+        } else {
+          //           $('.Homes-Status').append("<div class='no-users-found'>No users found</div>");
+
+          // // Apply styles directly using jQuery
+          // $('.no-users-found').css({
+          //     'color': '#ff6347',           // Red color
+          //     'font-size': '18px',           // Adjust font size
+          //     'font-weight': 'bold',         // Make it bold
+          //     'text-align': 'center',        // Center align the text
+          //     'padding': '10px',             // Add some padding for spacing
+          //     'border': '2px solid #ff6347', // Add a border for emphasis
+          //     'border-radius': '5px',        // Add rounded corners
+          //     'background-color': '#f8d7da', // Light red background color
+          //     'margin': '100px auto',         // Center the element horizontally
+          //     'max-width': '300px'           // Limit the width of the element
+          // });
+
+          // // Fade in animation
+          // $('.no-users-found').animate({
+          //     'opacity': 'show',  // Fade in
+          //     'transform': 'scale(10)' // Scale up to original size
+          // }, 9000); // Duration: 800 milliseconds
+        }
+
+
+
+      }, 200); // 2000 milliseconds = 2 seconds
+
+      $(document).on('click', '#edit_event', function () {
+        // Fetch data from the card
+        var eTitle = $(this).closest(".card-body").find("td:eq(0)").text();
+        var eDesc = $(this).closest(".card-body").find("td:eq(1)").text();
+        var country = $(this).closest(".card-body").find("td:eq(2)").text();
+        var state = $(this).closest(".card-body").find("td:eq(3)").text();
+        var city = $(this).closest(".card-body").find("td:eq(4)").text();
+        var Address = $(this).closest(".card-body").find("td:eq(5)").text();
+        var eDate = $(this).closest(".card-body").find("td:eq(6)").text();
+        var eTime = $(this).closest(".card-body").find("td:eq(7)").text();
+        var eDuration = $(this).closest(".card-body").find("td:eq(8)").text();
+        var eOrganizer = $(this).closest(".card-body").find("td:eq(9)").text();
+        var eGuest = $(this).closest(".card-body").find("td:eq(10)").text();
+        var eFee = $(this).closest(".card-body").find("td:eq(11)").text();
+        var eHost = $(this).closest(".card-body").find("td:eq(12)").text();
+        var ePromotion = $(this).closest(".card-body").find("td:eq(13)").text();
+        var telephone = $(this).closest(".card-body").find("td:eq(14)").text();
+        var email = $(this).closest(".card-body").find("td:eq(15)").text();
+        var more = $(this).closest(".card-body").find(".details-td").text();
+        var id = $(this).closest('.card').find('.events-id').val();
+
+        // Populate data in modal
+        $("#edit_eTitle").val(eTitle);
+        $("#edit_eDesc").val(eDesc);
+        $("#edit_country").val(country);
+        $("#edit_state").val(state);
+        $("#edit_city").val(city);
+        $("#edit_Address").val(Address);
+        $("#edit_eDate").val(eDate);
+        $("#edit_eTime").val(eTime);
+        $("#edit_eDuration").val(eDuration);
+        $("#edit_eOrganizer").val(eOrganizer);
+        $("#edit_eGuest").val(eGuest);
+        $("#edit_eFee").val(eFee);
+        $("#edit_eHost").val(eHost);
+        $("#edit_ePromotion").val(ePromotion);
+        $("#edit_email").val(email);
+        $("#edit_telephone").val(telephone);
+        $("#edit_more").val(more);
+        $("#modal_events_id").val(id);
+      });
+
+
+      $(document).on('click', '#edit_community_events_button', function () {
+        var id = $("#modal_events_id").val();
+        var edit_eTitle = $("#edit_eTitle").val();
+        var edit_eDesc = $("#edit_eDesc").val();
+        var edit_country = $("#edit_country").val();
+        var edit_state = $("#edit_state").val();
+        var edit_city = $("#edit_city").val();
+        var edit_Address = $("#edit_Address").val();
+        var edit_eDate = $("#edit_eDate").val();
+        var edit_eTime = $("#edit_eTime").val();
+        var edit_eDuration = $("#edit_eDuration").val();
+        var edit_eOrganizer = $("#edit_eOrganizer").val();
+        var edit_eGuest = $("#edit_eGuest").val();
+        var edit_eFee = $("#edit_eFee").val();
+        var edit_eHost = $("#edit_eHost").val();
+        var edit_ePromotion = $("#edit_ePromotion").val();
+        var edit_email = $("#edit_email").val();
+        var edit_telephone = $("#edit_telephone").val();
+        var edit_more = $("#edit_more").val();
+
+        // Create the data object to send in the AJAX request
+        var data = {
+          method: "edit_community_events",
+          id: id,
+          eTitle: edit_eTitle,
+          eDesc: edit_eDesc,
+          country: edit_country,
+          state: edit_state,
+          city: edit_city,
+          Address: edit_Address,
+          eDate: edit_eDate,
+          eTime: edit_eTime,
+          eDuration: edit_eDuration,
+          eOrganizer: edit_eOrganizer,
+          eGuest: edit_eGuest,
+          eFee: edit_eFee,
+          eHost: edit_eHost,
+          ePromotion: edit_ePromotion,
+          email: edit_email,
+          telephone: edit_telephone,
+          more: edit_more
+        };
+
+        // Make the AJAX request
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "edited successfully"
+              && responseObject.code == 200) {
+
+              $('#edit_event_modal').modal('hide');
+              location.reload();
+              alert("Edited successfully");
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
             }
             else {
               console.log("error");
@@ -605,33 +961,55 @@
             console.error(error);
           }
         });
-        } else{
-//           $('.Homes-Status').append("<div class='no-users-found'>No users found</div>");
+      });
 
-// // Apply styles directly using jQuery
-// $('.no-users-found').css({
-//     'color': '#ff6347',           // Red color
-//     'font-size': '18px',           // Adjust font size
-//     'font-weight': 'bold',         // Make it bold
-//     'text-align': 'center',        // Center align the text
-//     'padding': '10px',             // Add some padding for spacing
-//     'border': '2px solid #ff6347', // Add a border for emphasis
-//     'border-radius': '5px',        // Add rounded corners
-//     'background-color': '#f8d7da', // Light red background color
-//     'margin': '100px auto',         // Center the element horizontally
-//     'max-width': '300px'           // Limit the width of the element
-// });
+      $(document).on('click', '#delete_community_events_btn', function () {
 
-// // Fade in animation
-// $('.no-users-found').animate({
-//     'opacity': 'show',  // Fade in
-//     'transform': 'scale(10)' // Scale up to original size
-// }, 9000); // Duration: 800 milliseconds
-        }
-       
+        var id = $(this).closest('.card').find('.events-id').val();
 
+        // Create the data object to send in the AJAX request
+        var data = {
+          method: "delete_community_events",
+          id: id
+        };
 
-      }, 200); // 2000 milliseconds = 2 seconds
+        // Make the AJAX request
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "deleted successfully"
+              && responseObject.code == 200) {
+
+              alert("Deleted successfully");
+              location.reload();
+
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
+
 
 
       $('#submit-card').click(function () {
@@ -639,7 +1017,7 @@
         // Retrieve form input values
         if ($('#submitCardForm').parsley().validate()) {
           var eTitle = $("#eTitle").val();
-          var eDesc =$("#eDesc").val();
+          var eDesc = $("#eDesc").val();
           var country = $("#country").val();
           var state = $("#state").val();
           var city = $("#city").val();
@@ -662,19 +1040,19 @@
           var data = {
             "method": "add_events",
             "event_title": eTitle,
-            "event_description":eDesc,
+            "event_description": eDesc,
             "country": country,
             "state": state,
             "city": city,
             "location": Address,
-            "date":eDate,
-            "time":eTime,
+            "date": eDate,
+            "time": eTime,
             "duration": eDuration,
             "event_organizer": eOrganizer,
-            "event_guest":eGuest,
-            "event_fee":eFee,
-            "event_host":eHost,
-            "event_promotion":ePromotion,
+            "event_guest": eGuest,
+            "event_fee": eFee,
+            "event_host": eHost,
+            "event_promotion": ePromotion,
             "telephone": telephone,
             "email": email,
             "additional_information": more,
@@ -715,87 +1093,87 @@
           });
 
 
-    //       var cardHtml = `
-    //     <div class="card shadow my-3">
-    //         <div class="card-header bg-primary text-white">
-    //             Details
-    //         </div>
-    //         <div class="card-body">
-    //             <table class="table table-striped">
-    //                 <tbody>
-    //                   <tr>
-    //                         <th scope="row">Event Title:</th>
-    //                         <td>${eTitle}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Description:</th>
-    //                         <td>${eDesc}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Country:</th>
-    //                         <td>${country}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">State:</th>
-    //                         <td>${state}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">City:</th>
-    //                         <td>${city}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Location:</th>
-    //                         <td>${Address}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Dat:</th>
-    //                         <td>${eDate}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Time:</th>
-    //                         <td>${eTime}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Duration:</th>
-    //                         <td>${eDuration}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Organizer:</th>
-    //                         <td>${eOrganizer}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Guest:</th>
-    //                         <td>${eGuest}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Fee:</th>
-    //                         <td>${eFee}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Host:</th>
-    //                         <td>${eHost}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Event Promotion:</th>
-    //                         <td>${ePromotion}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Telephone:</th>
-    //                         <td>${telephone}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Email:</th>
-    //                         <td>${email}</td>
-    //                     </tr>
-    //                     <tr>
-    //                         <th scope="row">Additional Information:</th>
-    //                         <td class="details-td">${more}</td>
-    //                     </tr>
-    //                 </tbody>
-    //             </table>
-    //         </div>
-    //     </div>
-    // `;
+          //       var cardHtml = `
+          //     <div class="card shadow my-3">
+          //         <div class="card-header bg-primary text-white">
+          //             Details
+          //         </div>
+          //         <div class="card-body">
+          //             <table class="table table-striped">
+          //                 <tbody>
+          //                   <tr>
+          //                         <th scope="row">Event Title:</th>
+          //                         <td>${eTitle}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Description:</th>
+          //                         <td>${eDesc}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Country:</th>
+          //                         <td>${country}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">State:</th>
+          //                         <td>${state}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">City:</th>
+          //                         <td>${city}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Location:</th>
+          //                         <td>${Address}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Dat:</th>
+          //                         <td>${eDate}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Time:</th>
+          //                         <td>${eTime}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Duration:</th>
+          //                         <td>${eDuration}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Organizer:</th>
+          //                         <td>${eOrganizer}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Guest:</th>
+          //                         <td>${eGuest}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Fee:</th>
+          //                         <td>${eFee}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Host:</th>
+          //                         <td>${eHost}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Event Promotion:</th>
+          //                         <td>${ePromotion}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Telephone:</th>
+          //                         <td>${telephone}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Email:</th>
+          //                         <td>${email}</td>
+          //                     </tr>
+          //                     <tr>
+          //                         <th scope="row">Additional Information:</th>
+          //                         <td class="details-td">${more}</td>
+          //                     </tr>
+          //                 </tbody>
+          //             </table>
+          //         </div>
+          //     </div>
+          // `;
 
 
 

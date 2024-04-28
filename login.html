@@ -149,10 +149,11 @@
                 var token = responseData.auth_token;
 
                 localStorage.setItem('token', token);
-
+                
                 // Redirect to user-list.php
                 alert("Welcome" + " " + responseData.name);
-                window.location.href = "http://localhost/GlobalHubConnect/welcome.php?username=" + responseData.name + "";
+
+                window.location.href = "http://localhost/GlobalHubConnect/welcome.php?username=" + responseData.name + "&image_name=" + responseData.image;
               } else if (message === "Your are not registered") {
                 alert("You are not registered")
               } else if (message === "Email or password is incorrect. Please try again") {

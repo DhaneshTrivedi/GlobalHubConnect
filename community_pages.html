@@ -188,7 +188,7 @@
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="USA">USA</option>
               </select>
-                            <select class="form-select mb-3" name="State" id="State" data-parsley-required
+              <select class="form-select mb-3" name="State" id="State" data-parsley-required
                 data-parsley-error-message="Please select a state">
                 <option value="">State</option>
                 <option value="Alberta">Alberta</option>
@@ -225,62 +225,62 @@
                 <option value="Victoria">Victoria</option>
                 <option value="Wales">Wales</option>
                 <option value="Western Australia">Western Australia</option>
-                <option value="Yorkshire">Yorkshire</option>                
+                <option value="Yorkshire">Yorkshire</option>
               </select>
               <select class="form-select mb-3" name="City" id="City" data-parsley-required
                 data-parsley-error-message="Please select a city">
                 <option value="">City</option>
                 <option value="Ahmedabad">Ahmedabad</option>
-<option value="Austin">Austin</option>
-<option value="Baltimore">Baltimore</option>
-<option value="Bangalore">Bangalore</option>
-<option value="Barcelona">Barcelona</option>
-<option value="Beijing">Beijing</option>
-<option value="Boston">Boston</option>
-<option value="Brisbane">Brisbane</option>
-<option value="Cairo">Cairo</option>
-<option value="Calgary">Calgary</option>
-<option value="Cape Town">Cape Town</option>
-<option value="Chennai">Chennai</option>
-<option value="Chicago">Chicago</option>
-<option value="Dallas">Dallas</option>
-<option value="Delhi">Delhi</option>
-<option value="Detroit">Detroit</option>
-<option value="Dubai">Dubai</option>
-<option value="Dublin">Dublin</option>
-<option value="Edinburgh">Edinburgh</option>
-<option value="Glasgow">Glasgow</option>
-<option value="Guangzhou">Guangzhou</option>
-<option value="Houston">Houston</option>
-<option value="Hyderabad">Hyderabad</option>
-<option value="Istanbul">Istanbul</option>
-<option value="Jaipur">Jaipur</option>
-<option value="Jakarta">Jakarta</option>
-<option value="Jerusalem">Jerusalem</option>
-<option value="Karachi">Karachi</option>
-<option value="Kolkata">Kolkata</option>
-<option value="London">London</option>
-<option value="Los Angeles">Los Angeles</option>
-<option value="Manchester">Manchester</option>
-<option value="Melbourne">Melbourne</option>
-<option value="Mexico City">Mexico City</option>
-<option value="Miami">Miami</option>
-<option value="Mumbai">Mumbai</option>
-<option value="New York City">New York City</option>
-<option value="Paris">Paris</option>
-<option value="Philadelphia">Philadelphia</option>
-<option value="Phoenix">Phoenix</option>
-<option value="Pune">Pune</option>
-<option value="San Francisco">San Francisco</option>
-<option value="Seattle">Seattle</option>
-<option value="Shanghai">Shanghai</option>
-<option value="Singapore">Singapore</option>
-<option value="Sydney">Sydney</option>
-<option value="Tokyo">Tokyo</option>
-<option value="Toronto">Toronto</option>
-<option value="Vancouver">Vancouver</option>
-<option value="Washington, D.C.">Washington, D.C.</option>
-<option value="Wuhan">Wuhan</option>
+                <option value="Austin">Austin</option>
+                <option value="Baltimore">Baltimore</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Boston">Boston</option>
+                <option value="Brisbane">Brisbane</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Calgary">Calgary</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Detroit">Detroit</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Dublin">Dublin</option>
+                <option value="Edinburgh">Edinburgh</option>
+                <option value="Glasgow">Glasgow</option>
+                <option value="Guangzhou">Guangzhou</option>
+                <option value="Houston">Houston</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="London">London</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Manchester">Manchester</option>
+                <option value="Melbourne">Melbourne</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Miami">Miami</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="New York City">New York City</option>
+                <option value="Paris">Paris</option>
+                <option value="Philadelphia">Philadelphia</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="Pune">Pune</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Washington, D.C.">Washington, D.C.</option>
+                <option value="Wuhan">Wuhan</option>
 
               </select>
             </div>
@@ -304,7 +304,7 @@
               <label for="recipient-name" class="col-form-label">Admin:</label>
               <input type="text" class="form-control" id="admin" data-parsley-required>
             </div>
-            
+
           </form>
         </div>
         <div class="modal-footer">
@@ -315,8 +315,70 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Modal ends -->
+
+  <!-- edit modal -->
+  <div class="modal fade bd-example-modal-lg" id="edit_community_modal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Community details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editCommunityForm">
+            <div class="form-group">
+              <select class="form-select mb-3" name="edit_country" id="edit_country" data-parsley-required
+                data-parsley-error-message="Please select a country">
+                <option value="">Country</option>
+                <option value="Australia">Australia</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Canada">Canada</option>
+                <option value="China">China</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="India">India</option>
+                <option value="Japan">Japan</option>
+                <option value="Mexico">Mexico</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="USA">USA</option>
+              </select>
+
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Community Name:</label>
+              <input type="text" class="form-control" id="edit_cName" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Community Tag:</label>
+              <input type="text" class="form-control" id="edit_cTag" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Community description:</label>
+              <textarea class="form-control" id="edit_cDesc" data-parsley-required data-parsley-minlength=10></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Community rules:</label>
+              <textarea class="form-control" id="edit_cRules" data-parsley-required
+                data-parsley-minlength=10></textarea>
+            </div>
+
+            <input type="hidden" id="edit_community_id">
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" id="edit_submit_button" class="btn btn-primary">Edit Page</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
   <div class="Homes-Status"></div>
@@ -398,8 +460,8 @@
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
               '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
-              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>'+
-              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>'+
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
               '</div>' +
               '</li>'
             );
@@ -454,6 +516,7 @@
                 var cDesc = user.community_description;
                 var cRules = user.community_rules;
                 var admin = user.admin;
+                var id = user.id;
 
                 // Generate HTML for the card using the extracted properties
                 var cardHtml = `
@@ -485,10 +548,18 @@
                             <th scope="row">Community Rules:</th>
                             <td>${cRules}</td>
                         </tr>
+                        <tr>
+                        <th scope="row">ID</th>
+                        <td><input type="hidden" class="community-id" value="${id}">${id}</td>
+                    </tr>
                         
               
                     </tbody>
                 </table>
+                <div class="text-end">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit_community_modal" id="edit-btn">Edit</button>
+                <button type="button" class="btn btn-danger delete-btn" id="delete_community_page">Delete</button>
+            </div>
             </div>
         </div>
     `;
@@ -512,6 +583,130 @@
 
       }, 200); // 2000 milliseconds = 2 seconds
 
+      $(document).on('click', '#edit-btn', function () {
+        // Extract values from the card
+        var country = $(this).closest('.card').find('td:eq(0)').text();
+        var cName = $(this).closest('.card').find('td:eq(1)').text();
+        var cTag = $(this).closest('.card').find('td:eq(2)').text();
+        var cDesc = $(this).closest('.card').find('td:eq(3)').text();
+        var cRules = $(this).closest('.card').find('td:eq(4)').text();
+        var id = $(this).closest('.card').find('.community-id').val();
+
+        // Populate the edit modal form fields with these values
+        $('#edit_country').val(country);
+        $('#edit_cName').val(cName);
+        $('#edit_cTag').val(cTag);
+        $('#edit_cDesc').val(cDesc);
+        $('#edit_cRules').val(cRules);
+
+        // Store the community ID in a hidden field within the modal
+        $('#edit_community_modal').find('#edit_community_id').val(id);
+      });
+
+      $(document).on('click', '#edit_submit_button', function () {
+        // Get the values from the edit modal form
+        var country = $('#edit_country').val();
+        var cName = $('#edit_cName').val();
+        var cTag = $('#edit_cTag').val();
+        var cDesc = $('#edit_cDesc').val();
+        var cRules = $('#edit_cRules').val();
+        var id = $('#edit_community_id').val();
+
+        // Create the data object to send in the AJAX request
+        var data = {
+          method: "edit_community_pages",
+          country: country,
+          cName: cName,
+          cTag: cTag,
+          cDesc: cDesc,
+          cRules: cRules,
+          id: id
+        };
+
+        // Make the AJAX request
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "edited successfully"
+              && responseObject.code == 200) {
+
+              $('#edit_community_modal').modal('hide');
+              location.reload();
+              alert("Edited successfully");
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
+
+      $(document).on('click', '#delete_community_page', function () {
+
+        var id = $(this).closest('.card').find('.community-id').val();
+
+        // Create the data object to send in the AJAX request
+        var data = {
+          method: "delete_community_page",
+          id: id
+        };
+
+        // Make the AJAX request
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "deleted successfully"
+              && responseObject.code == 200) {
+
+              alert("Deleted successfully");
+              location.reload();
+
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
+
 
       $('#submit-card').click(function () {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -522,8 +717,9 @@
           var cTag = $("#cTag").val();
           var cDesc = $("#cDesc").val();
           var cRules = $("#cRules").val();
-          var admin = $("#admin").val();          
+          var admin = $("#admin").val();
           var user_id = $("#user_id").text();
+
           var data = {
             "method": "add_community_pages",
             "nationality": country,

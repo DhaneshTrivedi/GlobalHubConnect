@@ -8,19 +8,20 @@ class WebService extends GeneralClass
         parent::__construct();
     }
 
-    public function get_community_events()
+    public function get_comments_by_event()
     {
         $data = (object) $this->params;
-        $user_id = $this->requiredParameter($data, 'user_id', "user_id should not be empty");
+        $event_id = $this->requiredParameter($data, 'event_id', "event_id  is required");
+
         $data = null;
-        // Fetch all rental home data
-        $this->db->where('user_id', $user_id);
-        $rentalHomes = $this->db->get("community_events", null);
+       
+        $this->db->where("event_id", $event_id);
+        $comments = $this->db->get("comments");
 
         // Check if any rental homes were found
-        if (!$rentalHomes) {
+        if (!$comments) {
             $ResponseData = array(
-                "message" => "No events found",
+                "message" => "No comments found",
                 "code" => FAILED,
                 "status" => $this->translate('STATUS_FAILD')
             );
@@ -29,10 +30,10 @@ class WebService extends GeneralClass
 
         // Rental homes found, prepare response
         $ResponseData = array(
-            "message" => "Community events found",
+            "message" => "Comments found",
             'status' => $this->translate('STATUS_SUCCESS'),
             "code" => SUCCESS,
-            "rental_homes" => $rentalHomes
+            "comments" => $comments
         );
         $this->responseReturn($ResponseData);
     }

@@ -113,12 +113,19 @@
       height: 90px;
       overflow-y: scroll;
     }
-    @media (max-width: 1279px) {
-    .navbar >ul { 
-      display:flex;
-      flex-direction: column;
-      
+
+    .carousel-image {
+      height: 300px;
+      /* Set your desired height */
+      width: 550px;
+      margin: 0 auto;
+      /* Center the image */
     }
+
+    .carousel-inner {
+      height: 300px;
+      width: 550px;
+      /* Set the same height as the carousel images */
     }
   </style>
 
@@ -365,6 +372,199 @@
     </div>
   </div>
 
+
+  <!--Edit modal--->
+  <div class="modal fade bd-example-modal-lg" id="editModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit House Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editsubmitCardForm">
+            <div class="form-group">
+              <select class="form-select mb-3" name="edit_country" id="edit_Country" data-parsley-required
+                data-parsley-error-message="Please select a country">
+                <option value="">Country</option>
+                <option value="Australia">Australia</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Canada">Canada</option>
+                <option value="China">China</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="India">India</option>
+                <option value="Japan">Japan</option>
+                <option value="Mexico">Mexico</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="USA">USA</option>
+              </select>
+              <select class="form-select mb-3" name="edit_State" id="edit_State" data-parsley-required
+                data-parsley-error-message="Please select a state">
+                <option value="">State</option>
+                <option value="Alberta">Alberta</option>
+                <option value="Beijing">Beijing</option>
+                <option value="British Columbia">British Columbia</option>
+                <option value="California">California</option>
+                <option value="England">England</option>
+                <option value="Florida">Florida</option>
+                <option value="Guangdong">Guangdong</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Hokkaido">Hokkaido</option>
+                <option value="Honshu">Honshu</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="London">London</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="New South Wales">New South Wales</option>
+                <option value="New York">New York</option>
+                <option value="Northern Ireland">Northern Ireland</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Shandong">Shandong</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Texas">Texas</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Victoria">Victoria</option>
+                <option value="Wales">Wales</option>
+                <option value="Western Australia">Western Australia</option>
+                <option value="Yorkshire">Yorkshire</option>
+              </select>
+              <select class="form-select mb-3" name="edit_City" id="edit_City" data-parsley-required
+                data-parsley-error-message="Please select a city">
+                <option value="">City</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Austin">Austin</option>
+                <option value="Baltimore">Baltimore</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Boston">Boston</option>
+                <option value="Brisbane">Brisbane</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Calgary">Calgary</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Detroit">Detroit</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Dublin">Dublin</option>
+                <option value="Edinburgh">Edinburgh</option>
+                <option value="Glasgow">Glasgow</option>
+                <option value="Guangzhou">Guangzhou</option>
+                <option value="Houston">Houston</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="London">London</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Manchester">Manchester</option>
+                <option value="Melbourne">Melbourne</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Miami">Miami</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="New York City">New York City</option>
+                <option value="Paris">Paris</option>
+                <option value="Philadelphia">Philadelphia</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="Pune">Pune</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Washington, D.C.">Washington, D.C.</option>
+                <option value="Wuhan">Wuhan</option>
+
+              </select>
+              <select class="form-select mb-3" name="edit_BHK" id="edit_BHK" data-parsley-required
+                data-parsley-error-message="Please select the BHK">
+                <option value="">Select BHK</option>
+                <option value="1BHK">1BHK</option>
+                <option value="2BHK">2BHK</option>
+                <option value="3BHK">3BHK</option>
+                <option value="4BHK">4BHK</option>
+              </select>
+              <select class="form-select mb-3" name="edit_Duration" id="edit_Duration" data-parsley-required
+                data-parsley-error-message="Please select the duration">
+                <option value="">Duration</option>
+                <option value="1-3 Months">1-3 Months</option>
+                <option value="3-6 Months">3-6 Months</option>
+                <option value="6-9 Months">6-9 Months</option>
+                <option value="9-12 Months">9-12 Months</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Address:</label>
+              <input type="text" class="form-control" id="edit_Address" data-parsley-required>
+            </div>
+            <!-- <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Upload photos:</label>
+            <input type="file" class="form-control" id="edit_Homepics" data-parsley-required multiple>
+          </div> -->
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Telephone</label>
+              <div class="input-group">
+                <select name="countryCode" id="edit_countryCode" class="form-control" data-parsley-required
+                  data-parsley-trigger="change" data-parsley-error-message="Please select a country code">
+                  <option value="">Select Country Code</option>
+                  <option value="+1">United States (+1)</option>
+                  <option value="+91">India (+91)</option>
+                  <option value="+44">United Kingdom (+44)</option>
+                  <!-- Add more options as needed -->
+                </select>
+                <input type="tel" class="form-control" id="edit_Telephone" data-parsley-required
+                  data-parsley-type="digits" data-parsley-length="[10, 10]"
+                  data-parsley-error-message="Please enter a 10-digit phone number">
+              </div>
+              <!-- <label for="recipient-name" class="col-form-label">Telephone</label>
+            <input type="tel" class="form-control" id="Telephone" data-parsley-required data-parsley-type="number"> -->
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input type="email" class="form-control" id="edit_Email" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Rent-INR:</label>
+              <input type="number" class="form-control" id="edit_Rent" data-parsley-required>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Details:</label>
+              <textarea class="form-control" id="edit_Details" data-parsley-required
+                data-parsley-minlength=10></textarea>
+            </div>
+            <input type="hidden" id="edit_idd">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" id="edit_property" class="btn btn-primary">Add Property</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Carousel -->
   <div id="uploadedPhotosCarousel" class="carousel slide">
     <div class="carousel-inner" id="carouselInner">
@@ -499,10 +699,7 @@
             // Access the status property
             var message = responseObject.message;
 
-            if (message === "Found"
-              && responseObject.code == 200) {
-
-              // Redirect to user-list.php
+            if (message === "Found" && responseObject.code == 200) {
               // Iterate over the array of get_user objects
               $.each(responseObject.get_user, function (index, user) {
                 // Extract properties from the current user object
@@ -516,68 +713,115 @@
                 var email = user.email;
                 var rent = user.rent;
                 var details = user.details;
+                var id = user.id;
+                var photo_urls = user.photo_urls; // Assuming photo_urls is an array of image filenames
+
+                // Initialize carousel items HTML
+                var carouselItemsHtml = '';
+
+                // Check if photo_urls is present and is not null or empty
+                if (photo_urls && photo_urls.length > 0) {
+                  photo_urls.forEach(function (photo, idx) {
+                    var imagePath = `api/v1/${photo}`; // Construct the image path
+                    var activeClass = idx === 0 ? 'active' : ''; // Add active class to the first item
+                    carouselItemsHtml += `
+                    <div class="carousel-item ${activeClass}">
+                        <img src="${imagePath}" class="d-block w-100 carousel-image" alt="Property Image">
+                    </div>
+                `;
+                  });
+                } else {
+                  // If no photos are available, display a default image or message
+                  carouselItemsHtml += `
+                <div class="carousel-item active">
+                    <img src="path/to/default/image.jpg" class="d-block w-100 carousel-image" alt="No Image Available">
+                </div>
+            `;
+                }
 
                 // Generate HTML for the card using the extracted properties
                 var cardHtml = `
-        <div class="card shadow my-3">
-            <div class="card-header bg-primary text-white">
-                Details
+            <div class="card shadow my-3">
+                <div class="card-header bg-primary text-white">
+                    Details
+                </div>
+                <div id="carouselExampleIndicators${id}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        ${carouselItemsHtml}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators${id}" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators${id}" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tbody>
+                            <!-- Property details rows -->
+                            <tr>
+                                <th scope="row">Country</th>
+                                <td>${country}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">State</th>
+                                <td>${state}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">City</th>
+                                <td>${city}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">BHK</th>
+                                <td>${bhk}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Duration</th>
+                                <td>${duration}</td>
+                            </tr>
+                            <tr>
+                                <th class="address-th" scope="row">Address</th>
+                                <td>${address}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Telephone</th>
+                                <td>${telephone}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>${email}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Rent-INR</th>
+                                <td>${rent}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Details</th>
+                                <td class="details-td">${details}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ID</th>
+                                <td><input type="hidden" class="property-id" value="${id}">${id}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Buttons -->
+                    <div class="text-end">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal" id="edit-btn">Edit</button>
+                        <button type="button" class="btn btn-danger delete-btn" id="delete_btn">Delete</button>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <th scope="row">Country</th>
-                            <td>${country}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">State</th>
-                            <td>${state}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">City</th>
-                            <td>${city}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">BHK</th>
-                            <td>${bhk}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Duration</th>
-                            <td>${duration}</td>
-                        </tr>
-                        <tr>
-                            <th class="address-th" scope="row">Address</th>
-                            <td>${address}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Telephone</th>
-                            <td>${telephone}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Email</th>
-                            <td>${email}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Rent-INR</th>
-                            <td>${rent}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Details</th>
-                            <td class="details-td">${details}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    `;
+        `;
 
                 // Append the Bootstrap card to the desired div
                 $('.Homes-Status').append(cardHtml);
               });
-
-
             }
+
             else {
               console.log("error");
             }
@@ -629,6 +873,152 @@
       //     formData.append('data', JSON.stringify(data));
 
       // original end .....
+
+      $(document).on('click', '#edit-btn', function () {
+        // Extract values from the card
+        var id = $(this).closest('.card').find('.property-id').val();
+        var country = $(this).closest('.card').find('td:eq(0)').text();
+        var state = $(this).closest('.card').find('td:eq(1)').text();
+        var city = $(this).closest('.card').find('td:eq(2)').text();
+        var bhk = $(this).closest('.card').find('td:eq(3)').text();
+        var duration = $(this).closest('.card').find('td:eq(4)').text();
+        var address = $(this).closest('.card').find('td:eq(5)').text();
+        var telephone = $(this).closest('.card').find('td:eq(6)').text();
+        var email = $(this).closest('.card').find('td:eq(7)').text();
+        var rent = $(this).closest('.card').find('td:eq(8)').text();
+        var details = $(this).closest('.card').find('.details-td').text();
+
+        // Populate the edit modal form fields with these values
+        $('#edit_Country').val(country);
+        $('#edit_State').val(state);
+        $('#edit_City').val(city);
+        $('#edit_BHK').val(bhk);
+        $('#edit_Duration').val(duration);
+        $('#edit_Address').val(address);
+        $('#edit_Telephone').val(telephone);
+        $('#edit_Email').val(email);
+        $('#edit_Rent').val(rent);
+        $('#edit_Details').val(details);
+        $('#edit_idd').val(id);
+      });
+
+
+      $(document).on('click', '#edit_property', function () {
+        // Extract data from the form fields
+        var country = $('#edit_Country').val();
+        var state = $('#edit_State').val();
+        var city = $('#edit_City').val();
+        var bhk = $('#edit_BHK').val();
+        var duration = $('#edit_Duration').val();
+        var address = $('#edit_Address').val();
+        var countryCode = $('#edit_countryCode').val();
+        var telephone = countryCode + $('#edit_Telephone').val();
+        var email = $('#edit_Email').val();
+        var rent = $('#edit_Rent').val();
+        var details = $('#edit_Details').val();
+        var id = $('#edit_idd').val();
+
+        // Construct the data object to send to the API
+        var data = {
+          method: "edit_home_api",
+          id: id,
+          country: country,
+          state: state,
+          city: city,
+          bhk: bhk,
+          duration: duration,
+          address: address,
+          telephone: telephone,
+          email: email,
+          rent: rent,
+          details: details
+        };
+
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "edited successfully"
+              && responseObject.code == 200) {
+
+              $('#editModal').modal('hide');
+              alert("Edited successfully");
+              location.reload();
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
+
+
+
+
+      $(document).on('click', '#delete_btn', function () {
+        // Extract data from the form fields
+        var id = $(this).closest('.card').find('.property-id').val();
+
+        // Construct the data object to send to the API
+        var data = {
+          method: "delete_home_api",
+          id: id,
+        };
+
+        var formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+
+        $.ajax({
+          url: "http://localhost/GlobalHubConnect/api/v1/",
+          type: "POST",
+          data: formData,
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Prevent jQuery from automatically setting the content type
+
+          success: function (response) {
+            var responseObject = JSON.parse(response);
+
+            // Access the status property
+            var message = responseObject.message;
+
+            if (message === "deleted successfully"
+              && responseObject.code == 200) {
+
+              alert("Deleted successfully");
+              location.reload();
+            } else if (message === "Something went wrong please try again!") {
+              alert("Something went wrong please try again!")
+            }
+            else {
+              console.log("error");
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle errors
+            console.error(error);
+          }
+        });
+      });
+
+
 
       //try 
       $('#submit-card').click(function () {

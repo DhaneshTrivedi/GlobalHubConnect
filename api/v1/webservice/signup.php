@@ -16,6 +16,8 @@ class WebService extends GeneralClass
         $last_name = $this->requiredParameter($data, 'last_name', "last_name  is required");
         $email = $this->requiredParameter($data, 'mail', "mail should not be empty");
         $password = $this->requiredParameter($data, 'password', "password should not be empty");
+        $profileImage = isset($_FILES['profileImage']) ? $_FILES['profileImage'] : null;
+
         $data = null;
 
         $get_email = $this->getEmail($email);
@@ -40,13 +42,32 @@ class WebService extends GeneralClass
 
         // $password = password_hash($password, PASSWORD_DEFAULT);
         $verification_code = $this->generateRandomString(20);
+        $uploadDir = 'userImages/';
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true); // Create the directory with full permissions
+        }
 
+        if ($profileImage) {
+            $uploadFile = $uploadDir . basename($profileImage['name']);
+
+            if (move_uploaded_file($profileImage['tmp_name'], $uploadFile)) {
+                // Image uploaded successfully, save file name to database
+                $imageFileName = basename($profileImage['name']);
+            } else {
+                $ResponseData = array(
+                    "message" => "Failed to upload image",
+                    "code" => FAILED,
+                );
+                $this->responseReturn($ResponseData);
+            }
+        }
         // add users data in users
         $data = array(
             "first_name" => $first_name,
             "last_name" => $last_name,
             "mail" => $email,
             'password' => $password,
+            'profile_image' => $imageFileName ?? null,  // Add profile image file name to data array
             'created' => $datetime
         );
 

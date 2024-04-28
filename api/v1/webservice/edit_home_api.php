@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 class WebService extends GeneralClass
 {
@@ -8,9 +8,10 @@ class WebService extends GeneralClass
         parent::__construct();
     }
 
-    public function add_home()
+    public function edit_home_api()
     {
         $data = (object) $this->params;
+        $id = $this->requiredParameter($data, 'id', "id is required");
         $country = $this->requiredParameter($data, 'country', "country is required");
         $state = $this->requiredParameter($data, 'state', "state is required");
         $city = $this->requiredParameter($data, 'city', "city should not be empty");
@@ -21,27 +22,26 @@ class WebService extends GeneralClass
         $email = $this->requiredParameter($data, 'email', "email should not be empty");
         $details = $this->requiredParameter($data, 'details', "details should not be empty");
         $rent = $this->requiredParameter($data, 'rent', "rent should not be empty");
-        $user_id = $this->requiredParameter($data, 'user_id', "user_id should not be empty");
 
         // Handle file uploads
-        $photo_urls = [];
-        if (!empty($_FILES['photos']['name'])) {
-            $targetDir = "homes/";
-            if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0777, true);
-            }
-            foreach ($_FILES['photos']['name'] as $key => $value) {
-                $fileName = basename($_FILES['photos']['name'][$key]);
-                $targetFilePath = $targetDir . $fileName;
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-                if (in_array($fileType, $allowTypes)) {
-                    if (move_uploaded_file($_FILES['photos']['tmp_name'][$key], $targetFilePath)) {
-                        $photo_urls[] = $targetFilePath;
-                    }
-                }
-            }
-        }
+        // $photo_urls = [];
+        // if (!empty($_FILES['photos']['name'])) {
+        //     $targetDir = "uploads/";
+        //     if (!is_dir($targetDir)) {
+        //         mkdir($targetDir, 0777, true);
+        //     }
+        //     foreach ($_FILES['photos']['name'] as $key => $value) {
+        //         $fileName = basename($_FILES['photos']['name'][$key]);
+        //         $targetFilePath = $targetDir . $fileName;
+        //         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+        //         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        //         if (in_array($fileType, $allowTypes)) {
+        //             if (move_uploaded_file($_FILES['photos']['tmp_name'][$key], $targetFilePath)) {
+        //                 $photo_urls[] = $targetFilePath;
+        //             }
+        //         }
+        //     }
+        // }
 
 
         // Add other form data
@@ -56,16 +56,11 @@ class WebService extends GeneralClass
             'email' => $email,
             'details' => $details,
             'rent' => $rent,
-            'user_id' => $user_id,
         );
+        $this->db->where('id', $id);
+        $edit_home_id = $this->db->update('rent_home', $data);
 
-        $serialized_photo_urls = implode(',', $photo_urls);
-        $data['photo_urls'] = $serialized_photo_urls;
-
-
-        $add_home_id = $this->db->insert('rent_home', $data);
-
-        if (!$add_home_id) {
+        if (!$edit_home_id) {
             $ResponseData = array(
                 "message" => $this->translate('REGISTRATION_FAILED'),
                 "code" => FAILED,
@@ -75,10 +70,9 @@ class WebService extends GeneralClass
         }
 
         $ResponseData = array(
-            "message" => $this->translate('REGISTRATION_SUCCESS'),
+            "message" => $this->translate('edited successfully'),
             'status' => $this->translate('STATUS_SUCCESS'),
             "code" => SUCCESS,
-            "add_home_id" => $add_home_id
         );
         $this->responseReturn($ResponseData);
     }
@@ -97,4 +91,4 @@ class WebService extends GeneralClass
 
 
 }
-?> -->
+?>
