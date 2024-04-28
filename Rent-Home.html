@@ -580,6 +580,8 @@
     </button>
   </div>
 
+  <div id="error_message"></div>
+
   <!-- Vendor JS Files -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -824,8 +826,32 @@
             }
 
             else {
-              console.log("error");
+              // Remove any existing error message
+              $('#error-message').remove();
+
+              // Create a new div for error message
+              var errorMessage = $('<div id="error-message">No Data Found</div>');
+
+              // Append error message to the body
+              $('#error_message').append(errorMessage);
+
+              // Style the error message
+              errorMessage.css({
+                'position': 'fixed',
+                'top': '50%',
+                'left': '50%',
+                'transform': 'translate(-50%, -50%)',
+                'background-color': '#ffcccc',
+                'padding': '20px',
+                'border-radius': '10px',
+                'box-shadow': '0 0 10px rgba(0, 0, 0, 0.5)',
+                'font-family': 'Arial, sans-serif',
+                'font-size': '24px',
+                'color': '#ff0000',
+                'text-align': 'center'
+              });
             }
+
           },
           error: function (xhr, status, error) {
             // Handle errors

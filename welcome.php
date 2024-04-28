@@ -1,4 +1,4 @@
-<?php 
+<?php
 $username = isset($_GET['username']) ? $_GET['username'] : '';
 $imageName = isset($_GET['image_name']) ? $_GET['image_name'] : '';
 $imageSrc = "api/v1/userImages/" . $imageName;
@@ -72,7 +72,7 @@ $imageSrc = "api/v1/userImages/" . $imageName;
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
@@ -122,22 +122,14 @@ $imageSrc = "api/v1/userImages/" . $imageName;
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Services
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" style="color:white; " href="Rent-Home.html">Rent Home</a>
-              <a class="dropdown-item" style="color:white; " href="Recruite.html">Recruite</a>
-              <a class="dropdown-item" style="color:white; " href="community_pages.html">Community</a>
-            </div>
+          <li id="servicesNavItem" class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
           </li>
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a class="get-a-quote" href="login.html">Logout</a></li>
+
         </ul>
       </nav><!-- .navbar -->
 
@@ -151,7 +143,7 @@ $imageSrc = "api/v1/userImages/" . $imageName;
     <?php
     echo '<img src="' . $imageSrc . '" style="width: 415px; height:400px; object-fit: cover; object-position: top center;" class="img-fluid" alt="">';
     ?>
-</div>
+  </div>
 
 
   <!-- services ui  -->
@@ -262,6 +254,8 @@ $imageSrc = "api/v1/userImages/" . $imageName;
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -271,6 +265,127 @@ $imageSrc = "api/v1/userImages/" . $imageName;
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // Create the data object to send
+      accessToken = localStorage.getItem("token");
+
+      var data = {
+        "method": "check_login",
+        "token": accessToken,
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          // Access the status property
+          var message = responseObject.message;
+
+          if (message === "access approved"
+            && responseObject.code == 200) {
+            var responseData = JSON.parse(response);
+
+            $("#user_id").text(responseData.user_id);
+            var logoutListItem = '<li><a class="get-a-quote" id="logout" onclick="logout()" href="#">Logout</a></li>';
+
+            // Insert the new list item after the "Contact" link
+            $("a[href='contact.html']").parent().after(logoutListItem);
+
+            // Add the classes "nav-item" and "dropdown" to #servicesNavItem
+            $("#servicesNavItem").addClass("nav-item dropdown");
+            // Replace the navigation item with a dropdown menu
+            $("#servicesNavItem").html(
+
+              '<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
+              'aria-haspopup="true" aria-expanded="false">Services</a>' +
+              '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
+              '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
+              '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_chat.html" >Community Chat</a>' +
+              '</div>' +
+              '</li>'
+            );
+
+
+
+          }
+          else {
+            console.log("Error: " + responseObject);
+            console.log("error");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
+
+
+    })
+
+    function logout() {
+
+      accessToken = localStorage.getItem("token");
+      localStorage.removeItem('token');
+
+      // Create the data object to send
+      var data = {
+        "method": "logout",
+        "token": accessToken
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          // Access the status property
+          var message = responseObject.message;
+
+          if (message === "Logout successfully!"
+            && responseObject.code == 200) {
+
+            // Redirect to user-list.php
+            alert("Logged out successfully");
+            window.location.href = "http://localhost/GlobalHubConnect/login.html";
+          } else if (message === "Something went wrong please try again!") {
+            alert("Something went wrong please try again!")
+          }
+          else {
+            console.log("error");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
+
+    }
+
+  </script>
 </body>
 
 </html>

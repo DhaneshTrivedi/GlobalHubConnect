@@ -113,11 +113,12 @@
       height: 90px;
       overflow-y: scroll;
     }
+
     @media (max-width: 1279px) {
-    .navbar >ul { 
-      display:flex;
-     flex-direction: column;    
-    }
+      .navbar>ul {
+        display: flex;
+        flex-direction: column;
+      }
     }
   </style>
 
@@ -142,7 +143,7 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li id="servicesNavItem" class="nav-item">
             <a class="nav-link" href="services.html">Services</a>
@@ -341,7 +342,7 @@
             </div>
 
             <div class="form-group">
-              <label for="message-text" class="col-form-label">Assitional Information:</label>
+              <label for="message-text" class="col-form-label">Additional Information:</label>
               <textarea class="form-control" id="more" data-parsley-required data-parsley-minlength=10></textarea>
             </div>
           </form>
@@ -557,6 +558,8 @@
 
 
   <div class="Homes-Status"></div>
+  <div id="error_message"></div>
+
   <div id="user_id" style="display: none;"></div>
 
 
@@ -630,7 +633,7 @@
             // Replace the navigation item with a dropdown menu
             $("#servicesNavItem").html(
 
-              '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
+              '<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
               'aria-haspopup="true" aria-expanded="false">Services</a>' +
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
               '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
@@ -804,7 +807,30 @@
 
               }
               else {
-                console.log("error");
+                // Remove any existing error message
+                $('#error-message').remove();
+
+                // Create a new div for error message
+                var errorMessage = $('<div id="error-message">No Data Found</div>');
+
+                // Append error message to the body
+                $('#error_message').append(errorMessage);
+
+                // Style the error message
+                errorMessage.css({
+                  'position': 'fixed',
+                  'top': '50%',
+                  'left': '50%',
+                  'transform': 'translate(-50%, -50%)',
+                  'background-color': '#ffcccc',
+                  'padding': '20px',
+                  'border-radius': '10px',
+                  'box-shadow': '0 0 10px rgba(0, 0, 0, 0.5)',
+                  'font-family': 'Arial, sans-serif',
+                  'font-size': '24px',
+                  'color': '#ff0000',
+                  'text-align': 'center'
+                });
               }
             },
             error: function (xhr, status, error) {

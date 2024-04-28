@@ -12,6 +12,7 @@ class WebService extends GeneralClass
     {
         $data = (object) $this->params;
         $nationality = $this->requiredParameter($data, 'nationality', "Nationality is required");
+        $state = $this->requiredParameter($data, 'state', "state is required");
         $community_name = $this->requiredParameter($data, 'community_name', "Community name should not be empty");
         $community_tag = $this->requiredParameter($data, 'community_tag', "Community tag should not be empty");
         $community_description = $this->requiredParameter($data, 'community_description', "Community description should not be empty");
@@ -37,12 +38,13 @@ class WebService extends GeneralClass
         // add users data in users
         $data = array(
             "user_id" => $user_id,
-            'country' => $nationality,    
+            'country' => $nationality,
+            "state" => $state,
             "community_name" => $community_name,
-            "community_tag" => $community_tag, 
+            "community_tag" => $community_tag,
             "community_description" => $community_description,
             'community_rules' => $community_rules,
-            "admin" => $admin,         
+            "admin" => $admin,
         );
 
         $add_home_id = $this->db->insert('community_pages', $data);
@@ -79,7 +81,7 @@ class WebService extends GeneralClass
     {
         $this->db->where("email", $email);
         $result = $this->db->getOne("users", "id");
-        if (empty ($result)) {
+        if (empty($result)) {
             return false;
         } else {
             return $result;
