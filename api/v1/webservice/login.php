@@ -74,7 +74,7 @@ class WebService extends GeneralClass
 
         // second step login with password
 
-        if (!$userLogin || $password != $userLogin['password']) {
+        if (!$userLogin || !password_verify($password,  $userLogin['password'])) {
             $ResponseData = array(
                 "message" => "Email or password is incorrect. Please try again",
                 "code" => UNAUTHORIZED,

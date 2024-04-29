@@ -16,6 +16,7 @@ class WebService extends GeneralClass
         $last_name = $this->requiredParameter($data, 'last_name', "last_name  is required");
         $email = $this->requiredParameter($data, 'mail', "mail should not be empty");
         $password = $this->requiredParameter($data, 'password', "password should not be empty");
+        $param_password = password_hash($password, PASSWORD_DEFAULT); 
         $profileImage = isset($_FILES['profileImage']) ? $_FILES['profileImage'] : null;
 
         $data = null;
@@ -66,7 +67,7 @@ class WebService extends GeneralClass
             "first_name" => $first_name,
             "last_name" => $last_name,
             "mail" => $email,
-            'password' => $password,
+            'password' => $param_password,
             'profile_image' => $imageFileName ?? null,  // Add profile image file name to data array
             'created' => $datetime
         );
