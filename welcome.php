@@ -136,14 +136,16 @@ $imageSrc = "api/v1/userImages/" . $imageName;
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-  <div class="greet-text">
+  <div class="greet-text"
+    style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: brown; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
     <?php echo "Welcome, ", $username, "!!"; ?>
   </div>
   <div class="welcome_dp">
     <?php
-    echo '<img src="' . $imageSrc . '" style="width: 415px; height:400px; object-fit: cover; object-position: top center;" class="img-fluid" alt="">';
+    echo '<img src="' . $imageSrc . '" style="width: 415px; height:400px; object-fit: cover; object-position: top center; border-radius: 50%;" class="img-fluid" alt="">';
     ?>
   </div>
+
 
 
   <!-- services ui  -->
