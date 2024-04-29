@@ -253,7 +253,7 @@
   <div class=" main-container">
     <div class="left-container">
       <div class="search-container">
-        <input class="input1" type="text" id="get-text" placeholder="search communiy...">
+        <input class="input1" type="text" id="get-text" placeholder="search communiy..." search-data>
         <button class="send-btn1"><i style="font-size: 17px;" class="fa-solid fa-magnifying-glass"></i></button>
       </div>
       <div class="community"></div>
@@ -700,7 +700,22 @@
       });
 
     }
+// Search functionality code :
 
+const Input = document.querySelector("[search-data]");
+    Input.addEventListener("input", (e) => {
+      const searchValue = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll(".community-item");
+
+      cards.forEach((card) => {
+        const cardText = card.textContent.toLowerCase();
+        if (cardText.includes(searchValue)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
 
   </script>
 
