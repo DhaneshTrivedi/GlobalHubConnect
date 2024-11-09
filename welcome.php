@@ -1,4 +1,8 @@
-<?php $username = $_GET['username']; ?>
+<?php
+$username = isset($_GET['username']) ? $_GET['username'] : '';
+$imageName = isset($_GET['image_name']) ? $_GET['image_name'] : '';
+$imageSrc = "api/v1/userImages/" . $imageName;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +15,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -68,12 +72,33 @@
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
       font-size: 110%;
       background-color: var(--color-secondary);
+    }
+
+    .card {
+      background-color: var(--color-secondary);
+
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      transition-property: transform;
+      transition-duration: 0.3s;
+      box-shadow: 5px 3px black;
+      cursor: pointer;
+
+    }
+
+    .service-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
     }
   </style>
 
@@ -97,36 +122,72 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Services
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" style="color:white; " href="Rent-Home.html">Rent Home</a>
-              <a class="dropdown-item" style="color:white; " href="Recruite.html">Recruite</a>
-            </div>
+          <li id="servicesNavItem" class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
           </li>
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a class="get-a-quote" href="login.html">Logout</a></li>
+
         </ul>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-  <div class="greet-text">
+  <div class="greet-text"
+    style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: brown; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
     <?php echo "Welcome, ", $username, "!!"; ?>
   </div>
   <div class="welcome_dp">
     <?php
-    echo '<img src="assets/img/team/dhanesh-P.jpeg" style="width:415px; height:400px; object-fit: cover; object-position: top center;" class="img-fluid" alt="">';
+    echo '<img src="' . $imageSrc . '" style="width: 415px; height:400px; object-fit: cover; object-position: top center; border-radius: 50%;" class="img-fluid" alt="">';
     ?>
   </div>
 
+
+
+  <!-- services ui  -->
+  <!-- 1 -->
+  <div class="service-container">
+    <div class="card" style="width: 16rem;">
+      <img src="assets\img\rent-home-img.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-info">Rent-Home</h5>
+        <p class="card-text" style="color:white;">Want to give your home on rent?</p>
+        <a href="Rent-Home.html" class="btn btn-primary">click here!</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card" style="width: 16rem;">
+      <img src="assets\img\hire-img.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-info">Recruite</h5>
+        <p class="card-text" style="color:white;">Want to hire someone for some fit role?</p>
+        <a href="Recruite.html" class="btn btn-primary">click here!</a>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="card" style="width: 16rem;">
+      <img src="assets\img\community-page-img.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-info">Community Page</h5>
+        <p class="card-text" style="color:white;">Want to build a community abroad?</p>
+        <a href="community_pages.html" class="btn btn-primary">click here!</a>
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="card" style="width: 16rem;">
+      <img src="assets\img\upcoming-events-img.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-info">Community Event</h5>
+        <p class="card-text" style="color:white;">Want to host an event for the community members?</p>
+        <a href="community_events.html" class="btn btn-primary">click here!</a>
+      </div>
+    </div>
+  </div>
   <!-- container containing accomodation cards -->
 
 
@@ -153,8 +214,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About us</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -195,6 +256,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -204,6 +267,127 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // Create the data object to send
+      accessToken = localStorage.getItem("token");
+
+      var data = {
+        "method": "check_login",
+        "token": accessToken,
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          // Access the status property
+          var message = responseObject.message;
+
+          if (message === "access approved"
+            && responseObject.code == 200) {
+            var responseData = JSON.parse(response);
+
+            $("#user_id").text(responseData.user_id);
+            var logoutListItem = '<li><a class="get-a-quote" id="logout" onclick="logout()" href="#">Logout</a></li>';
+
+            // Insert the new list item after the "Contact" link
+            $("a[href='contact.html']").parent().after(logoutListItem);
+
+            // Add the classes "nav-item" and "dropdown" to #servicesNavItem
+            $("#servicesNavItem").addClass("nav-item dropdown");
+            // Replace the navigation item with a dropdown menu
+            $("#servicesNavItem").html(
+
+              '<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
+              'aria-haspopup="true" aria-expanded="false">Services</a>' +
+              '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
+              '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
+              '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_chat.html" >Community Chat</a>' +
+              '</div>' +
+              '</li>'
+            );
+
+
+
+          }
+          else {
+            console.log("Error: " + responseObject);
+            console.log("error");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
+
+
+    })
+
+    function logout() {
+
+      accessToken = localStorage.getItem("token");
+      localStorage.removeItem('token');
+
+      // Create the data object to send
+      var data = {
+        "method": "logout",
+        "token": accessToken
+      };
+
+      var formData = new FormData();
+      formData.append('data', JSON.stringify(data));
+
+      $.ajax({
+        url: "http://localhost/GlobalHubConnect/api/v1/",
+        type: "POST",
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from automatically setting the content type
+
+        success: function (response) {
+          var responseObject = JSON.parse(response);
+
+          // Access the status property
+          var message = responseObject.message;
+
+          if (message === "Logout successfully!"
+            && responseObject.code == 200) {
+
+            // Redirect to user-list.php
+            alert("Logged out successfully");
+            window.location.href = "http://localhost/GlobalHubConnect/login.html";
+          } else if (message === "Something went wrong please try again!") {
+            alert("Something went wrong please try again!")
+          }
+          else {
+            console.log("error");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
+
+    }
+
+  </script>
 </body>
 
 </html>

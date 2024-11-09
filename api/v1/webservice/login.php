@@ -74,7 +74,7 @@ class WebService extends GeneralClass
 
         // second step login with password
 
-        if (!$userLogin || $password != $userLogin['password']) {
+        if (!$userLogin || !password_verify($password,  $userLogin['password'])) {
             $ResponseData = array(
                 "message" => "Email or password is incorrect. Please try again",
                 "code" => UNAUTHORIZED,
@@ -124,7 +124,8 @@ class WebService extends GeneralClass
             "code" => SUCCESS,
             "auth_token" => $auth_token,
             "name" => $userLogin['first_name'],
-            "id" => $userId
+            "id" => $userId,
+            "image" => $userLogin['profile_image']
             // 'user_info' => $userinfo,
             // 'new_user' => $is_new_user
         );
@@ -135,7 +136,7 @@ class WebService extends GeneralClass
     function getEmail($email)
     {
         $this->db->where("mail", $email);
-        $result = $this->db->getOne("signup", "first_name,id,mail,password");
+        $result = $this->db->getOne("signup", "first_name,id,mail,password,profile_image");
 
         if (empty($result)) {
             return false;

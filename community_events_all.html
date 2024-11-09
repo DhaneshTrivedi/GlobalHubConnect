@@ -56,7 +56,7 @@
       font-size: 110%;
       background-color: var(--color-secondary);
     }
-
+    
     .search-container {
       height: 17vh;
       width: 100vw;
@@ -140,13 +140,11 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-
-  <!-- search bar -->
-  <div class="search-container">
-    <input type="text" id="get-text" placeholder="Search home..." search-data>
-    <button class="send-btn"><i style="font-size: 27px;" class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
-
+<!-- search bar -->
+<div class="search-container">
+  <input type="text" id="get-text" placeholder="Search home..." search-data>
+  <button class="send-btn"><i style="font-size: 27px;" class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
   <!-- container containing accomodation cards -->
   <div class="container_acc">
     <!-- <div class="rentHomeData" id="rentHomeData"></div> -->
@@ -227,7 +225,7 @@
   <script>
 
     var data = {
-      "method": "get_all_rent_home",
+      "method": "get_all_community_events",
     };
 
     var formData = new FormData();
@@ -243,7 +241,7 @@
       success: function (response) {
         var responseObject = JSON.parse(response);
         var message = responseObject.message;
-        if (message === "Rental homes found"
+        if (message === "Events found"
           && responseObject.code == 200) {
           var responseData = JSON.parse(response);
           displayRentHomeData(responseData.rental_homes);
@@ -261,64 +259,21 @@
 
       // LOOP start
       $.each(rentHomeData, function (index, rentHome) {
-
-        // original :
-        // rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
-        // rentHomeHTML += '<div class="card-body">';
-        // rentHomeHTML += '<h5 class="card-title">Apartment Name</h5>';
-        // rentHomeHTML += '<p class="card-text">';
-        // rentHomeHTML += '<ul>';
-        // rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
-        // rentHomeHTML += '<li>State: ' + rentHome.state + '</li>';
-        // rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
-        // rentHomeHTML += '<li>Rooms: ' + rentHome.bhk + '</li>';
-        // rentHomeHTML += '<li>Rent: ' + rentHome.rent + '</li>';
-        // rentHomeHTML += '<li>Email: t.smit170360@gmail.com </li>';
-        // rentHomeHTML += '</ul>';
-        // rentHomeHTML += '</p>';
-        // rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
-        // rentHomeHTML += '</div>';
-        // rentHomeHTML += '</div>';
-
-        // try:
-        // Inside displayRentHomeData function
-        $.each(rentHomeData, function (index, rentHome) {
-          rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
-          rentHomeHTML += '<div class="card-body">';
-          rentHomeHTML += '<h5 class="card-title">Apartment Name</h5>';
-          rentHomeHTML += '<p class="card-text">';
-          rentHomeHTML += '<ul>';
-          rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
-          rentHomeHTML += '<li>State: ' + rentHome.state + '</li>';
-          rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
-          rentHomeHTML += '<li>Rooms: ' + rentHome.bhk + '</li>';
-          rentHomeHTML += '<li>Rent: ' + rentHome.rent + '</li>';
-          rentHomeHTML += '<li>Email: ' + rentHome.email + ' </li>';
-          rentHomeHTML += '</ul>';
-          rentHomeHTML += '</p>';
-          rentHomeHTML += '<a href="mailto:' + rentHome.email + '?subject=Interested%20in%20Renting%20Property&body=Country:%20' + rentHome.country + '%0AState:%20' + rentHome.state + '%0ACity:%20' + rentHome.city + '%0ARooms:%20' + rentHome.bhk + '%0ARent:%20' + rentHome.rent + '" style="width:100%; " class="btn btn-primary deal-btn">Deal</a>';
-          rentHomeHTML += '</div>';
-          rentHomeHTML += '</div>';
-        });
-
-        $(".container_acc").html(rentHomeHTML);
-
-        $(".deal-btn").click(function (event) {
-          event.preventDefault();
-
-          const email = "t.smit170360@gmail.com";
-          const subject = "Interested in Renting Property";
-          const body = `
-    Country: ${$(this).siblings().find("li:contains('Country:')").text().trim()}
-    State: ${$(this).siblings().find("li:contains('State:')").text().trim()}
-    City: ${$(this).siblings().find("li:contains('City:')").text().trim()}
-    Rooms: ${$(this).siblings().find("li:contains('Rooms:')").text().trim()}
-    Rent: ${$(this).siblings().find("li:contains('Rent:')").text().trim()}
-  `;
-
-
-        });
-
+        rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
+        rentHomeHTML += '<div class="card-body">';
+        rentHomeHTML += '<h5 class="card-title">Event Name</h5>';
+        rentHomeHTML += '<p class="card-text">';
+        rentHomeHTML += '<ul>';
+        rentHomeHTML += '<li>Title: ' + rentHome.event_title + '</li>';
+        rentHomeHTML += '<li>Description: ' + rentHome.event_description + '</li>';
+        rentHomeHTML += '<li>Country: ' + rentHome.country + '</li>';
+        rentHomeHTML += '<li>City: ' + rentHome.city + '</li>';
+        rentHomeHTML += '<li>Date: ' + rentHome.date + '</li>';
+        rentHomeHTML += '</ul>';
+        rentHomeHTML += '</p>';
+        rentHomeHTML += '<a href="#" style="width:100%; " class="btn btn-primary">Deal</a>';
+        rentHomeHTML += '</div>';
+        rentHomeHTML += '</div>';
       });
 
 
@@ -332,7 +287,6 @@
       // rentHomeHTML += "</table>";
       $(".container_acc").html(rentHomeHTML);
     }
-
     // Search functionality code :
 
     const Input = document.querySelector("[search-data]");
@@ -347,9 +301,8 @@
         } else {
           card.style.display = "none";
         }
-      });
-    });
-
+      });
+    });
   </script>
 
 

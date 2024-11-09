@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -32,7 +32,6 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <style>
     .container_acc {
-      margin-top: 20vh;
       width: 90vw;
       display: flex;
       justify-content: center;
@@ -44,17 +43,65 @@
       transform: scale(1.02);
     }
 
+
     .dropdown-menu {
       background-color: var(--color-secondary);
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
       font-size: 110%;
       background-color: var(--color-secondary);
+    }
+
+    .search-container {
+      height: 17vh;
+      width: 100vw;
+      padding-left: 20vw;
+      padding-top: 10px;
+      position: relative;
+      display: inline-block;
+      margin-top: 8rem;
+
+    }
+
+
+    .search-container input {
+      border: 3px solid grey;
+      width: 55vw;
+      height: 8vh;
+      border-radius: 30px;
+      padding-left: 100px;
+      padding-top: 5px;
+      color: grey;
+      font-size: 20px;
+      font-family: "Noto Sans Khojki", sans-serif;
+      font-weight: 400px;
+      font-style: normal;
+      box-shadow: 1px 2px grey;
+
+    }
+
+    input:focus {
+      border-color: grey;
+    }
+
+    .send-btn {
+      width: 90px;
+      height: 8vh;
+      background-color: transparent;
+      color: grey;
+      border: 3px solid grey;
+      border-radius: 30px;
+      position: absolute;
+      left: 345px;
+      border: none;
+      cursor: pointer;
+      padding-top: 5px;
+
     }
   </style>
 
@@ -64,7 +111,7 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top"
-    style="background-color: rgba(14, 29, 52, 0.9);">
+    style="background-color : rgba(14, 29, 52, 0.9)">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
@@ -94,131 +141,18 @@
   </header><!-- End Header -->
   <!-- End Header -->
 
+  <!-- search bar  -->
+  <div class="search-container">
+    <input type="text" id="get-text" placeholder="Search jobs..." search-data>
+    <button class="send-btn"><i style="font-size: 27px;" class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+
+
   <!-- container containing accomodation cards -->
   <div class="container_acc">
+    <!-- <div class="rentHomeData" id="rentHomeData"></div> -->
     <!-- 1 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
-    <!-- 2 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
-    <!-- 3 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
 
-    <!-- 4 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
-
-    <!-- 1 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
-    <!-- 2 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
-    <!-- 3 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="card card_acc" style="width: 18rem;">
-      <img src="assets/img/accomodation1.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Appolo apartment</h5>
-        <p class="card-text">
-        <ul>
-          <li>2 Bedroom</li>
-          <li>1 Kitchen</li>
-          <li>Free-wifi</li>
-        </ul>
-        </p>
-        <a href="#" style="width:100%; " class="btn btn-primary">Deal</a>
-      </div>
-    </div>
   </div>
   <!-- End of container_acc  -->
 
@@ -245,8 +179,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About us</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -291,122 +225,108 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
 
-
   <script>
-    $(document).ready(function () {
 
-      // Create the data object to send
-      accessToken = localStorage.getItem("token");
+    var data = {
+      "method": "get_all_recruit",
+    };
 
-      var data = {
-        "method": "check_login",
-        "token": accessToken,
-      };
+    var formData = new FormData();
+    formData.append('data', JSON.stringify(data));
 
-      var formData = new FormData();
-      formData.append('data', JSON.stringify(data));
+    $.ajax({
+      url: "http://localhost/GlobalHubConnect/api/v1/",
+      type: "POST",
+      data: formData,
+      processData: false, // Prevent jQuery from processing the data
+      contentType: false, // Prevent jQuery from automatically setting the content type
 
-      $.ajax({
-        url: "http://localhost/GlobalHubConnect/api/v1/",
-        type: "POST",
-        data: formData,
-        processData: false, // Prevent jQuery from processing the data
-        contentType: false, // Prevent jQuery from automatically setting the content type
-
-        success: function (response) {
-          var responseObject = JSON.parse(response);
-
-          // Access the status property
-          var message = responseObject.message;
-
-          if (message === "access approved"
-            && responseObject.code == 200) {
-            var responseData = JSON.parse(response);
-
-            $("#user_id").text(responseData.user_id);
-            var logoutListItem = '<li><a class="get-a-quote" id="logout" onclick="logout()" href="#">Logout</a></li>';
-
-            // Insert the new list item after the "Contact" link
-            $("a[href='contact.html']").parent().after(logoutListItem);
-
-            // Add the classes "nav-item" and "dropdown" to #servicesNavItem
-            $("#servicesNavItem").addClass("nav-item dropdown");
-            // Replace the navigation item with a dropdown menu
-            $("#servicesNavItem").html(
-
-              '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
-              'aria-haspopup="true" aria-expanded="false">Services</a>' +
-              '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
-              '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
-              '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
-              '</div>' +
-              '</li>'
-            );
-
-
-          }
-          else {
-            console.log("Error: " + responseObject);
-            console.log("error");
-          }
-        },
-        error: function (xhr, status, error) {
-          // Handle errors
-          console.error(error);
+      success: function (response) {
+        var responseObject = JSON.parse(response);
+        var message = responseObject.message;
+        if (message === "Jobs found"
+          && responseObject.code == 200) {
+          var responseData = JSON.parse(response);
+          displayRentHomeData(responseData.rental_homes);
+        } else {
+          console.error("Error:", responseData.message);
         }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      }
+    });
+
+    function displayRentHomeData(rentHomeData) {
+      var rentHomeHTML = "";
+
+      // LOOP start
+      $count = 1
+      $.each(rentHomeData, function (index, rentHome) {
+        rentHomeHTML += '<div class="card card_acc" style="width: 18rem;">';
+        rentHomeHTML += '<div class="card-body">';
+        rentHomeHTML += '<h5 class="card-title">Job ' + $count + '</h5>';
+        rentHomeHTML += '<p class="card-text">';
+        rentHomeHTML += '<ul>';
+        rentHomeHTML += '<li>Job title: ' + rentHome.jobTitle + '</li>';
+        rentHomeHTML += '<li>Salary: ' + rentHome.salary + '</li>';
+        rentHomeHTML += '<li>Location: ' + rentHome.location + '</li>';
+        rentHomeHTML += '<li>Qualification: ' + rentHome.qualification + '</li>';
+        rentHomeHTML += '<li>Email: ' + rentHome.email + ' </li>';
+        rentHomeHTML += '</ul>';
+        rentHomeHTML += '</p>';
+        rentHomeHTML += '<a href="mailto:' + rentHome.email + '?subject=Interested%20in%20Job%20Profile&body=Job title:%20' + rentHome.jobTitle + '%0ASalary:%20' + rentHome.salary + '%0ALocation:%20' + rentHome.location + '%0AQualification:%20' + rentHome.qualification + '" style="width:100%; " class="btn btn-primary apply-btn">Apply</a>';
+        rentHomeHTML += '</div>';
+        rentHomeHTML += '</div>';
+        $count = $count + 1;
+
+        $(".container_acc").html(rentHomeHTML);
+
+        $(".apply-btn").click(function (event) {
+          event.preventDefault();
+
+          const email = "t.smit170360@gmail.com";
+          const subject = "Interested in Job profile";
+          const body = `
+    Country: ${$(this).siblings().find("li:contains('Country:')").text().trim()}
+    State: ${$(this).siblings().find("li:contains('State:')").text().trim()}
+    City: ${$(this).siblings().find("li:contains('City:')").text().trim()}
+    Rooms: ${$(this).siblings().find("li:contains('Rooms:')").text().trim()}
+    Rent: ${$(this).siblings().find("li:contains('Rent:')").text().trim()}
+  `;
+
+
+        });
       });
 
-    })
 
-    function logout() {
+      // $.each(rentHomeData, function(index, rentHome) {
+      //     rentHomeHTML += "<tr>";
+      //     rentHomeHTML += "<td>" + rentHome.country + "</td>";
+      //     rentHomeHTML += "<td>" + rentHome.state + "</td>";
+      //     rentHomeHTML += "</tr>";
+      // });
 
-      accessToken = localStorage.getItem("token");
-      localStorage.removeItem('token');
-
-      // Create the data object to send
-      var data = {
-        "method": "logout",
-        "token": accessToken
-      };
-
-      var formData = new FormData();
-      formData.append('data', JSON.stringify(data));
-
-      $.ajax({
-        url: "http://localhost/GlobalHubConnect/api/v1/",
-        type: "POST",
-        data: formData,
-        processData: false, // Prevent jQuery from processing the data
-        contentType: false, // Prevent jQuery from automatically setting the content type
-
-        success: function (response) {
-          var responseObject = JSON.parse(response);
-
-          // Access the status property
-          var message = responseObject.message;
-
-          if (message === "Logout successfully!"
-            && responseObject.code == 200) {
-
-            // Redirect to user-list.php
-            alert("Logged out successfully");
-            window.location.href = "http://localhost/GlobalHubConnect/login.html";
-          } else if (message === "Something went wrong please try again!") {
-            alert("Something went wrong please try again!")
-          }
-          else {
-            console.log("error");
-          }
-        },
-        error: function (xhr, status, error) {
-          // Handle errors
-          console.error(error);
-        }
-      });
-
+      // rentHomeHTML += "</table>";
+      $(".container_acc").html(rentHomeHTML);
     }
-  </script>
+    // Search functionality code :
 
+    const Input = document.querySelector("[search-data]");
+    Input.addEventListener("input", (e) => {
+      const searchValue = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll(".card_acc");
+
+      cards.forEach((card) => {
+        const cardText = card.textContent.toLowerCase();
+        if (cardText.includes(searchValue)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
 
 
 </body>

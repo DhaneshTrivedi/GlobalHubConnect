@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -152,7 +152,8 @@
 
                 // Redirect to user-list.php
                 alert("Welcome" + " " + responseData.name);
-                window.location.href = "http://localhost/GlobalHubConnect/welcome.php?username=" + responseData.name + "";
+
+                window.location.href = "http://localhost/GlobalHubConnect/welcome.php?username=" + responseData.name + "&image_name=" + responseData.image;
               } else if (message === "Your are not registered") {
                 alert("You are not registered")
               } else if (message === "Email or password is incorrect. Please try again") {

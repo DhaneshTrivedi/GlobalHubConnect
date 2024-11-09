@@ -1,0 +1,6 @@
+
+/api/v1/uploads
+*.jpg
+*.png
+*.jpeg
+assets/media/GlobalHubConnect.mp4

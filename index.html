@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -37,12 +37,26 @@
       filter: opacity(0.8);
       margin-top: -13.5px;
       z-index: 1;
-      width: 100px;
+      width: 200px;
     }
 
     .dropdown-item:hover {
       font-size: 110%;
       background-color: var(--color-secondary);
+    }
+
+    .green {
+      color: green;
+      font-size: 37px;
+      margin-left: 30px;
+      margin-top: 15px;
+    }
+
+    .red {
+      color: red;
+      font-size: 37px;
+      margin-left: 30px;
+      margin-top: 15px;
     }
   </style>
 
@@ -94,11 +108,11 @@
             opportunities, and vibrant communities.</p>
 
           <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" class="form-control" placeholder="Enter City">
+            <input type="text" class="form-control" placeholder="Enter Country">
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
 
-          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="count_display row gy-4" data-aos="fade-up" data-aos-delay="400">
 
             <div class="col-lg-3 col-6">
               <div class="stats-item text-center w-100 h-100">
@@ -131,6 +145,9 @@
                 <p>Communities</p>
               </div>
             </div><!-- End Stats Item -->
+
+          </div>
+          <div class="available">
 
           </div>
         </div>
@@ -212,9 +229,9 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row gy-4">
-          <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+          <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" style="margin-top:150px;">
+            <img src="assets/img/ghc.png" class="img-fluid" alt="">
+            <a href="assets\media\GlobalHubConnect.mp4" class="glightbox play-btn"></a>
           </div>
           <div class="col-lg-6 content order-last  order-lg-first">
             <h3>About Us</h3>
@@ -256,18 +273,19 @@
             <ul style="display: flex; width:1200px;">
               <!-- Dhanesh -->
               <li data-aos="fade-up" data-aos-delay="200">
-                <div class="card mb-3" style="max-width: 540px; height:181px;">
+                <div class="card mb-3" style="max-width: 540px; height:200px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="assets/img/team/dhanesh-P.jpeg" class="img-fluid rounded-start" alt="...">
+                      <img src="assets/img/team/dhanesh-P.jpeg" class="img-fluid rounded-start" alt="..." style="height: 200px;width: 220px;">
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">Trivedi Dhanesh</h5>
                         <p class="card-text">
-                          "GlobalHubConnect is a digital platform build to tackle some common post experinced problems
-                          one faces moving abroad."</p>
-                        <p class="card-text"><small class="text-body-secondary">Web Developer</small></p>
+                          "GlobalHubConnect: Your go-to platform for overcoming challenges faced by students abroad.
+                          Designed
+                          with care to simplify your international journey. Join us and make your move seamless!"</p>
+                        <p class="card-text"><small class="text-body-secondary">Full Stack Developer</small></p>
                       </div>
                     </div>
                   </div>
@@ -344,10 +362,11 @@
               <div class="card-img">
                 <img src="assets/img/community-search.webp" alt="" class="img-fluid">
               </div>
-              <h3><a href="community_search.html" class="stretched-link">Community Search</a></h3>
-              <p>Our community search tool allows you to discover and connect with offline communities in your area that
-                cater to your same cultural background.community search feature, designed specifically to help you find
-                local communities and resources to support you during your time abroad.</p>
+              <h3><a href="community_chat.html" class="stretched-link">Community Chat</a></h3>
+              <p>A community chat tool is a platform designed to facilitate communication and
+                 collaboration among members of a specific community or group.The community Chat tool allows user to surf through wide range of communities
+                across globe and provides communication between members of a community. Also it allows user to make comments, discuss and surf through all ongoing 
+              evnts.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -356,7 +375,7 @@
               <div class="card-img">
                 <img src="assets/img/community-events.webp" alt="" class="img-fluid">
               </div>
-              <h3><a href="community_events.html" class="stretched-link">Community Events</a></h3>
+              <h3><a href="community_events_all.html" class="stretched-link">Community Events</a></h3>
               <p>Our community events are designed to bring students together in fun and interactive ways, providing
                 opportunities to make new friends, learn valuable skills, and gain insights into the diverse cultures
                 and experiences awaiting you in your host country.</p>
@@ -368,7 +387,7 @@
               <div class="card-img">
                 <img src="assets/img/community-page.avif" alt="" class="img-fluid">
               </div>
-              <h3><a href="community_pages.html" class="stretched-link">Community Pages</a></h3>
+              <h3><a href="community_pages_all.html" class="stretched-link">Community Pages</a></h3>
               <p>Our community pages serve as a virtual hub where students and visitors like yourself can come together,
                 share experiences, ask questions, and find valuable resources tailored to your unique needs as
                 abroad-going students.</p>
@@ -402,7 +421,7 @@
             <p> "Ready to embark on your study abroad journey? Start exploring your options, connecting with fellow
               students, and accessing valuable resources today!
               <br>
-              Don't wait – your adventure awaits! Get started now."
+              Don't wait your adventure awaits! Get started now."
             </p>
             <a class="cta-btn" href="signup.html">Call To Action</a>
           </div>
@@ -736,8 +755,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About us</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -845,8 +864,11 @@
               '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
               'aria-haspopup="true" aria-expanded="false">Services</a>' +
               '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
-              '<a class="dropdown-item" style="color:white" ;"background-color: transparent"; href="Rent-Home.html">Rent Home</a>' +
-              '<a class="dropdown-item" style="color:white" ;"background-color: transparent"; href="Recruite.html">Recruite</a>' +
+              '<a class="dropdown-item" style="color:white"  href="Rent-Home.html">Rent Home</a>' +
+              '<a class="dropdown-item" style="color:white"  href="Recruite.html">Recruite</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_pages.html" >Community Pages</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_events.html" >Community Events</a>' +
+              '<a class="dropdown-item" style="color:white" href="community_chat.html" >Community Chat</a>' +
               '</div>' +
               '</li>'
             );
@@ -912,6 +934,48 @@
       });
 
     }
+
+    // checking for country service available :
+    const form = document.querySelector('form');
+const Input = document.querySelector(".form-control");
+const countryList = ["USA", "Canada", "UK", "Australia", "Germany", "France", "Japan", "China", "Brazil", "India", "Mexico", "Singapore"];
+const stateList = ["Alberta", "British Columbia", "California", "Florida", "Gujarat", "Illinois", "Karnataka", "Kerala", "Maharashtra", "Manitoba", "New South Wales", "New York", "Ohio", "Ontario", "Pennsylvania", "Quebec", "Rajasthan", "Shandong", "Tamil Nadu", "Texas", "Uttar Pradesh", "Victoria", "Western Australia", "Yorkshire"];
+const cityList = ["Ahmedabad", "Austin", "Baltimore", "Bangalore", "Barcelona", "Beijing", "Boston", "Brisbane", "Cairo", "Calgary", "Cape Town", "Chennai", "Chicago", "Dallas", "Delhi", "Detroit", "Dubai", "Dublin", "Edinburgh", "Glasgow", "Guangzhou", "Houston", "Hyderabad", "Istanbul", "Jaipur", "Jakarta", "Jerusalem", "Karachi", "Kolkata", "London", "Los Angeles", "Manchester", "Melbourne", "Mexico City", "Miami", "Mumbai", "New York City", "Paris", "Philadelphia", "Phoenix", "Pune", "San Francisco", "Seattle", "Shanghai", "Singapore", "Sydney", "Tokyo", "Toronto", "Vancouver", "Washington, D.C.", "Wuhan"];
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form submission
+    const inputValue = Input.value.trim().toUpperCase(); // Trim and convert input to uppercase
+    let count_display = document.querySelector(".count_display");
+    let available = document.querySelector(".available");
+    let list = available.classList;
+
+    // Check if the input value exactly matches any country, state, or city in the respective lists
+    const matchedCountry = countryList.find(country => country.toUpperCase() === inputValue);
+    const matchedState = stateList.find(state => state.toUpperCase() === inputValue);
+    const matchedCity = cityList.find(city => city.toUpperCase() === inputValue);
+
+    // Display search result if an exact match is found
+    if (matchedCountry || matchedState || matchedCity) {
+        console.log("Match found:", matchedCountry || matchedState || matchedCity);
+        count_display.style.display = "none";
+        available.innerHTML = "All Services available in " + inputValue;
+        list.add("green");
+        list.remove('red');
+        // Perform further actions with the matched country, state, or city if needed
+    } else {
+        if (inputValue == '' || inputValue == ' ') {
+            count_display.style.display = 'flex';
+            list.remove('red');
+            list.remove('green');
+            available.style.display = 'none';
+        } else {
+            count_display.style.display = "none";
+            available.innerHTML = "We are coming soon at " + inputValue;
+            list.add('red');
+            list.remove('green');
+        }
+    }
+});
   </script>
 
 </body>

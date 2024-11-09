@@ -11,6 +11,8 @@
 
   <!-- Favicons -->
   <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <link href="assets/img/logo.png" rel="icon">
+
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -95,6 +97,11 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="profileImage">Profile Image</label>
+                  <input type="file" name="profileImage" id="profileImage" class="form-control" accept="image/*">
+                </div>
+
+                <div class="form-group">
                   <label for="email">E-Mail</label>
                   <input type="email" name="email" id="mail" class="form-control" placeholder="E mail"
                     data-parsley-required>
@@ -142,10 +149,11 @@
           var last_name = $("#l_name").val();
           var mail = $("#mail").val();
           var password = $("#password").val();
+          var profileImage = $("#profileImage")[0].files[0]; // Get the image file
 
-          if (first_name == "" || last_name == "" || mail == "" || password == "") {
-            alert("Please fill out all fields");
-            return
+          if (first_name == "" || last_name == "" || mail == "" || password == "" || !profileImage) {
+            alert("Please fill out all fields and upload an image");
+            return;
           }
 
           // Create the data object to send
@@ -159,6 +167,7 @@
 
           var formData = new FormData();
           formData.append('data', JSON.stringify(data));
+          formData.append('profileImage', profileImage); 
 
           $.ajax({
             url: "http://localhost/GlobalHubConnect/api/v1/",
